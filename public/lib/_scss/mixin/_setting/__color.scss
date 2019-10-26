@@ -1,0 +1,44 @@
+//--------------------Color
+
+//暗い色
+$color-dark: #3C3C48;
+$color-dark-darken: darken($color-dark, 5%);
+$color-dark-lighten: lighten($color-dark, 10%);
+$color-dark-more-lighten: lighten($color-dark, 35%);
+
+//明るい色
+$color-light: #eee;
+$color-light-darken: darken($color-light, 15%);
+$color-light-lighten: lighten($color-light, 5%);
+
+//ブランドカラー
+$color-brand:#ed6d3d;
+$color-brand-darken: darken($color-brand, 15%);
+$color-brand-lighten: lighten($color-brand, 15%);
+
+//ポイントカラー
+$color-point:#4D5269;
+$color-point-darken: darken($color-point, 15%);
+$color-point-lighten: lighten($color-point, 15%);
+
+//その他
+$color-etc:#3D2F28;
+$color-etc-darken: darken($color-etc, 5%);
+$color-etc-lighten: lighten($color-etc, 15%);
+
+//エラーメッセージ
+$color-info:#33cc66;
+$color-info-lighten:#bde5f8;
+$color-success:#4F8A10;
+$color-success-lighten:#DFF2BF;
+$color-warning: #9F6000;
+$color-warning-lighten: #FEEFB3;
+$color-error:#D8000C;
+$color-error-lighten:#FFBABA;
+
+//snsカラー
+$color-line: #1dcd00;
+$color-facebook: #3B5998;
+$color-twitter: #55acee;
+$color-youtube: #EC3324;
+$color-instagram: #CDA98A;

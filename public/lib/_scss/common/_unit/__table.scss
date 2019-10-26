@@ -1,0 +1,115 @@
+/*
+---
+name: u-table
+category:
+- common/unit/u-table
+tag:
+- base
+compile: false
+---
+
+テーブル
+
+```html
+<table class="u-table">
+  <caption class='u-ttl_m'>テーブルサンプル</caption>
+  <colgroup>
+    <col span="1" style="width:30%;">
+    <col span="3" style="width:20%;">
+    <col span="1" style="width:10%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="key">長いvalueです。ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー</td>
+      <td data-label="長いkeyです。ダミーダミーダミーダミー。">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+    </tr>
+    <tr>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+    </tr>
+    <tr>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+    </tr>
+  </tbody>
+</table>
+```
+*/
+
+.u-table{
+  border-collapse: collapse;
+  width: 100%;
+  tr{
+    border: 1px solid $color-light-darken;
+  }
+  th,
+  td{
+    border: 1px solid $color-light-darken;
+    padding: $bm/2;
+    @include min-screen($width-s +1px){
+      span{
+        display: none;
+      }
+    }
+  }
+  th{
+    background-color: $color-brand-lighten;
+    color:#000;
+    vertical-align: middle;
+  }
+  @include max-screen($width-s){
+    font-size: 1.4rem;
+    thead{
+      display: none;
+    }
+    tr{
+      display: block;
+      border: none;
+      margin-bottom: $bm;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+    th,
+    td{
+      box-sizing: border-box;
+      display: flex;
+      width: 100%;
+      margin-top: -1px;
+      padding: $bm;
+      line-height: 1.4;
+      &::before{
+        content : attr(data-label);
+        $flex-w:100px;
+        max-width:$flex-w;
+        flex: 0 0 $flex-w;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        padding: $bm;
+        margin: -$bm;
+        margin-right: $bm;
+        background-color: $color-light;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import '../../../mixin/__mixins.scss';
+
+.pagetop{
+  position: fixed;
+  z-index: 9999;
+  bottom:$bm-inner;
+  right:$bm-inner;
+  display: none;
+  @include max-screen($width-m){
+    bottom:$bm;
+    right:$bm;
+  }
+	&__row{
+	}
+	&__item{
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 45px;
+		width: 45px;
+		position: relative;
+		text-decoration: none;
+		color:$color-brand;
+		background-color: #fff;
+		border: 2px solid $color-brand;
+		&::before{
+			@include icon-font('\f102');
+			display: block;
+			font-weight: bold;
+		}
+		@include touch-hover(){
+			background-color: $color-brand;
+			color:#fff;
+			transition: all .5s;
+			&::before{
+				transition: transform .5s .3s;
+				transform: translate3d(0,-3px,0);
+			}
+		}
+	}
+  &__label{
+    display: none;
+  }
+}

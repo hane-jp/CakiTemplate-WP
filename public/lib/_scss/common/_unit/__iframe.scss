@@ -1,0 +1,16 @@
+.u-iframe{
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background-color: $color-dark;
+  > iframe,
+  > object,
+  > embed{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

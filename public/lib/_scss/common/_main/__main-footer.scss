@@ -1,0 +1,16 @@
+.main-footer{
+	&__row{
+
+	}
+	&__body{
+		margin-bottom: $bm-inner;
+	}
+	&__ttl{
+		font-size: 2rem;
+		color:$color-dark;
+		border-bottom: 1px solid #000;
+		margin-bottom: .5em;
+
+	}
+
+}

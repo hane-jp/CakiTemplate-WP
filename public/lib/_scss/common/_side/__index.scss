@@ -1,0 +1,9 @@
+.side{
+  &__item{
+    box-sizing: border-box;
+    padding: $bm;
+    border-left: 2px solid $color-point;
+    margin-bottom: $bm-inner;
+    background-color: $color-light-lighten;
+  }
+}

@@ -1,0 +1,55 @@
+//ベースフォント設定
+//Author: Masato Amishiro
+
+//--------------------- web fonts ---------------------//
+//@import "__font-family/_noto-sans.scss";
+@import "__font-family/baskerville.scss";
+@import "__font-family/_font-awesome/fontawesome.scss";
+
+//--------------------- font-family mixin ---------------------//
+
+// ゴシック体
+@mixin gothic {
+	font-family: Linotte, YuGothic, 'Yu Gothic', 游ゴシック体, 游ゴシック, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Roboto, メイリオ, Meiryo, 'ＭＳ Ｐゴシック', Osaka, 'MS PGothic', Arial, Helvetica, Verdana, sans-serif;
+}
+
+// 明朝体 - コンテンツ用
+@mixin mincho {
+	font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+}
+
+@mixin mincho-en {
+	font-family: 'Libre Baskerville', serif;
+}
+
+//--------------------- setting ---------------------//
+
+html {
+	font-size: 62.5%; //remベースサイズ設定 1.6rem = 16px
+	-webkit-text-size-adjust: 100%; //スマフォ縦横切替時設定
+}
+
+body {
+	font-size: 1.6rem; // 1.6rem = 16px
+	font-feature-settings: "Kana"; //opentypeの文字詰めを有効
+	@include gothic; //ゴシック体を利用
+	line-height: 1.8;
+	color:$color-dark-lighten;
+}
+
+//テキストリンク
+a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); //タップ時のハイライト削除
+	outline: none;
+	color:$color-dark;
+	@include touch-hover() {
+		text-decoration: none;
+	}
+}
+
+//文字選択
+::-moz-selection,
+::selection {
+	background: rgba(0, 0, 0, 0);
+	text-shadow: none;
+}

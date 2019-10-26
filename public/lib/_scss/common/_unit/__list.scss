@@ -1,0 +1,38 @@
+/*
+---
+name: u-list
+category:
+- common/unit/u-lsit
+tag:
+- base
+compile: false
+---
+
+リストまで
+
+```html
+<ul class="u-list__ul">
+<li>dummy</li>
+<li>dummy</li>
+<li>dummy</li>
+</ul>
+```
+```html
+
+
+*/
+
+.u-list{
+  $this:&;
+  margin-bottom: 0;
+  & > li{
+    color:#000;
+  }
+  &__ul{
+    @extend #{$this};
+    & > li{
+      list-style: disc;
+      margin-left: $bm-inner;
+    }
+  }
+}

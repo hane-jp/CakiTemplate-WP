@@ -1,0 +1,68 @@
+.gnav{
+  display: block;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top:0;
+  bottom: 0;
+  padding-left: 70px;
+  z-index: -1;
+  opacity: 0;
+  &__bg{
+    display: block;
+    position: fixed;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.7);
+    z-index: -1;
+  }
+  &__row{
+    box-sizing: border-box;
+    height: 100%;
+    padding-top: $header-height;
+    -webkit-overflow-scrolling: touch;
+    background-color: #fff;
+    overflow-y: auto;
+  }
+  &__item{
+    background-color: #fff;
+  }
+  &__link{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 55px;
+    padding: 0 $bm;
+    text-decoration: none;
+    border-bottom: 1px solid $color-light;
+    line-height: 1.2;
+    &.contact{
+      color:#fff;
+      background-color: $color-point;
+    }
+  }
+}
+
+.gnav-deep{
+  &__row{
+    box-shadow: inset 0 2px 5px rgba(0,0,0,.25);
+    background-color: $color-light;
+  }
+  &__link{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 55px;
+    padding: 0 $bm;
+    text-decoration: none;
+    border-top: 1px solid $color-light-darken;
+    line-height: 1.2;
+    &::before{
+      content: '└';
+      margin-right: $bm;
+    }
+  }
+}

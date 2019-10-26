@@ -1,0 +1,48 @@
+.pan{
+  max-width: 100%;
+  flex: 0 0 100%;
+	&__row{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+	&__item{
+		display: flex;
+		align-items: center;
+		$this:&;
+		margin-right: $bm/2;
+		&::after{
+			@include icon-font();
+			margin-left: $bm/2;
+		}
+		a{
+			height: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			font-size: 1.2rem;
+			@include touch-hover(){
+				text-decoration: underline;
+			}
+		}
+		&_home{
+			@extend #{$this};
+			a{
+				span{
+					display: none;
+				}
+				&::before{
+					@include icon-font('\f015');
+				}
+			}
+		}
+		&_thispage{
+			@extend #{$this};
+			&::after{
+				display: none;
+			}
+		}
+	}//item
+
+}

@@ -1,0 +1,112 @@
+/*
+---
+name: u-pagination(hide)
+category:
+- common/unit/u-pagination
+tag:
+- base
+compile: false
+---
+
+ページネーションを調整します
+
+```html
+<nav>
+  <ul class="u-pagination">
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_first"><span>&laquo;</span></label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_prev"><span>&lt;</span></label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link">1</label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link">2</label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link">3</label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_next"><span>&gt;</span></label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_last"><span>&raquo;</span></label>
+    </li>
+  </ul>
+</nav>
+```
+*/
+
+.u-pagination{
+  $this:".u-pagination";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__item{
+    &:first-child{
+      #{$this}__link{
+        border-radius: 3px 0 0 3px;
+      }
+    }
+    &:last-child{
+      #{$this}__link{
+        border-radius: 0 3px 3px 0;
+      }
+    }
+    &.active{
+      #{$this}__link{
+        background-color: $color-brand;
+        color:#fff;
+        font-weight: bold;
+      }
+    }
+  }
+  &__link{
+    $link:&;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    padding: 0 $bm*1.5;
+    background-color: #fff;
+    border: 1px solid $color-light;
+    margin-right: -1px;
+    font-size: 1.2rem;
+    span{
+      display: none;
+    }
+    @include touch-hover(){
+      background-color: $color-brand;
+      color:#fff;
+      cursor: pointer;
+    }
+    &_first{
+      @extend #{$link};
+      &::before{
+        @include icon-font('\f100');
+      }
+    }
+    &_prev{
+      @extend #{$link};
+      &::before{
+        @include icon-font('\f104');
+      }
+    }
+    &_next{
+      @extend #{$link};
+      &::before{
+        @include icon-font('\f105');
+      }
+    }
+    &_last{
+      @extend #{$link};
+      &::before{
+        @include icon-font('\f101');
+      }
+    }
+  }//link
+
+}

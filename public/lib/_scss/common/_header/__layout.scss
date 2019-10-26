@@ -1,0 +1,56 @@
+.header{
+  position: fixed;
+  z-index: 999;
+  top:0;
+  right: 0;
+  left: 0;
+  &__row{
+    @include wrap;
+    border-top: 4px solid transparent;
+  }
+  &__bg{
+    box-sizing: content-box;
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-top: 4px solid $color-point;
+    box-shadow: 0 0px 24px rgba(0,0,0,.25);
+    height: $header-height;
+    z-index: 2;
+    @include max-screen($width-s){
+      box-shadow: 0 0px 5px rgba(0,0,0,.25);
+    }
+  }
+  &__logo{
+    position: relative;
+    z-index: 2;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $header-height;
+    a{
+      @include bg-img(common/header/logo,png);
+    }
+    img{
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__gnav{
+    position: relative;
+    z-index: 3;
+    float: right;
+    @include max-screen($width-s){
+      margin-top: 4px;
+      z-index: 1;
+    }
+  }
+  &__menubar{
+    margin-top: 4px;
+  }
+}

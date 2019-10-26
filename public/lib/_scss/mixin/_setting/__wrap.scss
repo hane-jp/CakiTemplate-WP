@@ -1,0 +1,12 @@
+//--------------------wrapper
+
+@mixin wrap {
+  box-sizing: border-box;
+	max-width: $width-l;
+  width: 100%;
+  margin: 0 auto;
+	padding: 0 $bm-inner;
+	@include max-screen($width-s){
+		padding: 0 $bm*2;
+	}
+}

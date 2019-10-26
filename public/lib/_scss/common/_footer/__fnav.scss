@@ -1,0 +1,90 @@
+
+.fnav{
+	border-bottom: 1px solid $color-light;
+	&__row{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		@include min-screen($width-s +1px){
+			@include wrap;
+		}
+		@include max-screen($width-s){
+			display: block;
+		}
+	}
+	&__item{
+		$this:&;
+		max-width: 100%;
+		flex: 1 1 100%;
+		a{
+			box-sizing: border-box;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 45px;
+			text-decoration: none;
+			@include min-screen($width-s +1px){
+				border-left: 1px solid $color-light;
+			}
+			@include touch-hover(){
+				background-color: $color-light;
+				color:#fff;
+			}
+			@include max-screen($width-s){
+				padding: 0 $bm;
+				justify-content: flex-start;
+				border-bottom: 1px solid $color-light;
+				&::after{
+					@include icon-font();
+					position: absolute;
+					right: $bm;
+					top:0;
+					bottom: 0;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+		}
+		&_home{
+			@extend #{$this};
+			body.home & a{
+				background-color: $color-light;
+				color:#fff;
+			}
+		}
+		&_template{
+			@extend #{$this};
+			body._template & a{
+				background-color: $color-light;
+				color:#fff;
+			}
+		}
+		&_sample{
+			@extend #{$this};
+			body.sample & a{
+				background-color: $color-light;
+				color:#fff;
+			}
+		}
+    &_layout{
+			@extend #{$this};
+			body._layout & a{
+				background-color: $color-light;
+				color:#fff;
+			}
+		}
+		&_contact{
+			@extend #{$this};
+			a{
+				background-color: $color-point;
+				color:$color-light;
+			}
+			body.contact & a{
+				background-color: $color-light;
+				color:#fff;
+			}
+		}
+	}//item
+}

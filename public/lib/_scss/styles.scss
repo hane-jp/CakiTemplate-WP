@@ -1,0 +1,74 @@
+//mixin
+@import "mixin/_setting/_color.scss";
+@import "mixin/_setting/_size.scss";
+@import "mixin/_setting/_wrap.scss";
+@import "mixin/_base/__bg-img.scss";
+@import "mixin/_base/__touch-hover.scss";
+@import "mixin/_base/__media-queries.scss";
+@import "mixin/_base/_crearfix.scss";
+@import "mixin/_base/__icon-font.scss";
+@import "mixin/_output/__scss-img.scss";
+
+//base
+@import "base/_reset/__html5reset_1.6.1.scss";
+@import "base/_setting/_font.scss";
+@import "base/_setting/_body.scss";
+
+//common
+@import "common/_header/_layout.scss";
+@import "common/_header/_menubar.scss";
+@include min-screen($width-s + 1px){
+  @import "common/_header/_gnav_pc.scss";
+  @import "common/_header/__gnav-deep_pc.scss";
+}
+@include max-screen($width-s){
+  @import "common/_header/_gnav_sp.scss";
+}
+
+//メインエリア
+@import "common/_main/_main.scss";
+@import "common/_main/__main-header.scss";
+@import "common/_main/__main-footer.scss";
+@import "common/_main/_pan.scss";
+
+//コンテンツエリア
+@import "common/_conts/_index.scss";
+
+//サイドエリア
+@import "common/_side/_index.scss";
+
+//フッター
+@import "common/_footer/_layout.scss";
+@import "common/_footer/_fnav.scss";
+@import "common/_footer/_footadr.scss";
+
+//ユニット
+@import "common/_unit/_img.scss";
+@import "common/_unit/_btn.scss";
+@import "common/_unit/_icon.scss";
+@import "common/_unit/_small.scss";
+@import "common/_unit/_figure.scss";
+@import "common/_unit/_only.scss";
+@import "common/_unit/_ttl.scss";
+@import "common/_unit/_assist.scss";
+@import "common/_unit/_position.scss";
+@import "common/_unit/_list.scss";
+@import "common/_unit/_pagination.scss";
+@import "common/_unit/_table.scss";
+@import "common/_unit/_iframe.scss";
+@import "common/_unit/_etc.scss";
+@import "common/_unit/_sns.scss";
+
+//ページレイアウト
+@import "common/_layout/__page-card/index.scss";
+@import "common/_layout/__page-column/index.scss";
+@import "common/_layout/__page-free/index.scss";
+@import "common/_layout/__page-full/index.scss";
+@import "common/_layout/__page-single/index.scss";
+
+//レイアウトコンポーネント
+@import "common/_layout/_full.scss";
+@import "common/_layout/_column.scss";
+
+//ページ個別
+@import "page/_home/__main-v.scss";

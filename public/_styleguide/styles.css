@@ -1,0 +1,2105 @@
+@charset "UTF-8";
+/* 
+html5doctor.com Reset Stylesheet v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+@import 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i';
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+main,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block; }
+
+ol,
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input,
+select {
+  vertical-align: middle; }
+
+img {
+  vertical-align: top;
+  font-size: 0;
+  line-height: 0; }
+
+/*!
+ * Font Awesome Free 5.8.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+.fa,
+.fas,
+.far,
+.fal,
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1; }
+
+/*!
+ * Font Awesome Free 5.8.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: normal;
+  font-display: auto;
+  src: url("../fonts/fa-brands-400.eot");
+  src: url("../fonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("../fonts/fa-brands-400.woff2") format("woff2"), url("../fonts/fa-brands-400.woff") format("woff"), url("../fonts/fa-brands-400.ttf") format("truetype"), url("../fonts/fa-brands-400.svg#fontawesome") format("svg"); }
+
+.fab {
+  font-family: 'FontAwesome'; }
+
+/*!
+ * Font Awesome Free 5.8.2 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("../fonts/fa-solid-900.eot");
+  src: url("../fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../fonts/fa-solid-900.woff2") format("woff2"), url("../fonts/fa-solid-900.woff") format("woff"), url("../fonts/fa-solid-900.ttf") format("truetype"), url("../fonts/fa-solid-900.svg#fontawesome") format("svg"); }
+
+.fa,
+.fas {
+  font-family: 'FontAwesome';
+  font-weight: 900; }
+
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  font-size: 1.6rem;
+  font-feature-settings: "Kana";
+  font-family: Linotte, YuGothic, 'Yu Gothic', 游ゴシック体, 游ゴシック, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', Roboto, メイリオ, Meiryo, 'ＭＳ Ｐゴシック', Osaka, 'MS PGothic', Arial, Helvetica, Verdana, sans-serif;
+  line-height: 1.8;
+  color: #535364; }
+
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+  color: #3C3C48; }
+  .no-js a:hover,
+  .no-touchevents a:hover,
+  .touchevents a.touch, a:hover {
+    text-decoration: none; }
+
+::-moz-selection,
+::selection {
+  background: rgba(0, 0, 0, 0);
+  text-shadow: none; }
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; }
+
+#all {
+  width: 100%; }
+
+.header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  left: 0; }
+  .header__row {
+    box-sizing: border-box;
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    border-top: 4px solid transparent; }
+    @media screen and (max-width: 666px) {
+      .header__row {
+        padding: 0 16px; } }
+  .header__bg {
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-top: 4px solid #4D5269;
+    box-shadow: 0 0px 24px rgba(0, 0, 0, 0.25);
+    height: 48px;
+    z-index: 2; }
+    @media screen and (max-width: 666px) {
+      .header__bg {
+        box-shadow: 0 0px 5px rgba(0, 0, 0, 0.25); } }
+  .header__logo {
+    position: relative;
+    z-index: 2;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px; }
+    .header__logo a {
+      display: block;
+      overflow: hidden;
+      width: 122px;
+      height: 0;
+      padding-top: 42px;
+      background-image: url("../img/common/header/logo.png");
+      background-size: 122px 42px; }
+      @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+        .header__logo a {
+          background-image: url("../img/common/header/logo@2x.png"); } }
+    .header__logo img {
+      max-width: 100%;
+      width: 100%;
+      height: auto; }
+  .header__gnav {
+    position: relative;
+    z-index: 3;
+    float: right; }
+    @media screen and (max-width: 666px) {
+      .header__gnav {
+        margin-top: 4px;
+        z-index: 1; } }
+  .header__menubar {
+    margin-top: 4px; }
+
+.menubar {
+  display: none;
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  cursor: pointer; }
+  @media screen and (max-width: 666px) {
+    .menubar {
+      display: flex;
+      align-items: center;
+      justify-content: center; } }
+  .no-js .menubar:hover,
+  .no-touchevents .menubar:hover,
+  .touchevents .menubar.touch, .menubar:hover {
+    background-color: #eee; }
+  .menubar__row {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 22px; }
+  .menubar__item {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #3C3C48;
+    border-radius: 3px; }
+    .menubar__item:nth-of-type(1) {
+      top: 0;
+      animation: menu-bar01 .75s forwards; }
+    .menubar__item:nth-of-type(2) {
+      top: 10px;
+      transition: all .25s .25s;
+      opacity: 1; }
+    .menubar__item:nth-of-type(3) {
+      bottom: 0;
+      animation: menu-bar02 .75s forwards; }
+  .menubar.js-active .menubar__item:nth-of-type(1) {
+    animation: active-menu-bar01 .75s forwards; }
+  .menubar.js-active .menubar__item:nth-of-type(2) {
+    opacity: 0; }
+  .menubar.js-active .menubar__item:nth-of-type(3) {
+    animation: active-menu-bar03 .75s forwards; }
+
+@keyframes menu-bar01 {
+  0% {
+    transform: translateY(10px) rotate(45deg); }
+  50% {
+    transform: translateY(10px) rotate(0); }
+  100% {
+    transform: translateY(0) rotate(0); } }
+
+@keyframes menu-bar02 {
+  0% {
+    transform: translateY(-10px) rotate(-45deg); }
+  50% {
+    transform: translateY(-10px) rotate(0); }
+  100% {
+    transform: translateY(0) rotate(0); } }
+
+@keyframes active-menu-bar01 {
+  0% {
+    transform: translateY(0) rotate(0); }
+  50% {
+    transform: translateY(10px) rotate(0); }
+  100% {
+    transform: translateY(10px) rotate(45deg); } }
+
+@keyframes active-menu-bar03 {
+  0% {
+    transform: translateY(0) rotate(0); }
+  50% {
+    transform: translateY(-10px) rotate(0); }
+  100% {
+    transform: translateY(-10px) rotate(-45deg); } }
+
+@media screen and (min-width: 667px) {
+  .gnav__row {
+    display: flex; }
+  .gnav__link {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 8px;
+    text-decoration: none;
+    z-index: 2; }
+    .no-js .gnav__link:hover,
+    .no-touchevents .gnav__link:hover,
+    .touchevents .gnav__link.touch, .gnav__link:hover {
+      transition: all .3s;
+      background-color: #ed6d3d;
+      color: #fff; }
+    body.home .gnav__link.home {
+      color: #ed6d3d; }
+    body.contact .gnav__link.contact {
+      color: #ed6d3d; }
+    body._sample .gnav__link._sample {
+      color: #ed6d3d; }
+    body._layout .gnav__link._layout {
+      color: #ed6d3d; }
+    body._styleguide .gnav__link._styleguide {
+      color: #ed6d3d; }
+    .gnav__link_contact {
+      background-color: #4D5269;
+      color: #eee; }
+    .gnav-deep .gnav__link::after {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin-left: 4px;
+      font-weight: bold; }
+  .gnav-deep {
+    position: relative;
+    z-index: 0; }
+    .gnav-deep .gnav__link.js-active {
+      position: relative;
+      z-index: 2;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid #ed6d3d; }
+    .gnav-deep__nav {
+      display: none;
+      z-index: -1;
+      box-sizing: border-box;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      padding-top: 16px; }
+      .gnav-deep__nav::after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-4px);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 4px 8px 4px;
+        border-color: transparent transparent #ed6d3d transparent; }
+    .gnav-deep__row {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      border-top: 6px solid #ed6d3d;
+      border-radius: 3px;
+      overflow: hidden; }
+    .gnav-deep__item {
+      border-bottom: 1px solid #eee;
+      height: 45px;
+      width: 200px; }
+      .gnav-deep__item:last-child {
+        border-bottom: none; }
+    .gnav-deep__link {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      background-color: #fff;
+      height: 45px;
+      line-height: 1.2;
+      padding: 0 8px; }
+      .no-js .gnav-deep__link:hover,
+      .no-touchevents .gnav-deep__link:hover,
+      .touchevents .gnav-deep__link.touch, .gnav-deep__link:hover {
+        color: #fff;
+        background-color: #ed6d3d; } }
+
+@media screen and (max-width: 666px) {
+  .gnav {
+    display: block;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding-left: 70px;
+    z-index: -1;
+    opacity: 0; }
+    .gnav__bg {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: -1; }
+    .gnav__row {
+      box-sizing: border-box;
+      height: 100%;
+      padding-top: 48px;
+      -webkit-overflow-scrolling: touch;
+      background-color: #fff;
+      overflow-y: auto; }
+    .gnav__item {
+      background-color: #fff; }
+    .gnav__link {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      height: 55px;
+      padding: 0 8px;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+      line-height: 1.2; }
+      .gnav__link.contact {
+        color: #fff;
+        background-color: #4D5269; }
+  .gnav-deep__row {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.25);
+    background-color: #eee; }
+  .gnav-deep__link {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 55px;
+    padding: 0 8px;
+    text-decoration: none;
+    border-top: 1px solid #c8c8c8;
+    line-height: 1.2; }
+    .gnav-deep__link::before {
+      content: '└';
+      margin-right: 8px; } }
+
+.main {
+  padding-top: 48px;
+  margin-bottom: 48px; }
+  .main__row {
+    box-sizing: border-box;
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px; }
+    @media screen and (max-width: 666px) {
+      .main__row {
+        padding: 0 16px; } }
+  .main__head {
+    max-width: 100%;
+    flex: 0 0 100%; }
+  .main__conts {
+    margin-top: 24px; }
+  .main__side {
+    margin-top: 24px; }
+  .main__foot {
+    box-sizing: border-box;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+    margin-top: 24px; }
+  .main p {
+    margin: .5em 0; }
+
+.main-header {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  padding: 24px 0; }
+  .main-header__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 -1000px;
+    padding: 0 -1000px;
+    z-index: -1;
+    background-color: #3C3C48; }
+  @media screen and (min-width: 667px) {
+    .main-header__row {
+      text-align: center; } }
+  .main-header__ttl {
+    font-size: 3rem;
+    font-weight: normal;
+    color: #fff; }
+    @media screen and (max-width: 666px) {
+      .main-header__ttl {
+        font-size: 2.4rem; } }
+  .main-header__desc {
+    color: #fff; }
+
+.main-footer__body {
+  margin-bottom: 24px; }
+
+.main-footer__ttl {
+  font-size: 2rem;
+  color: #3C3C48;
+  border-bottom: 1px solid #000;
+  margin-bottom: .5em; }
+
+.pan {
+  max-width: 100%;
+  flex: 0 0 100%; }
+  .pan__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; }
+  .pan__item, .pan__item_home, .pan__item_thispage {
+    display: flex;
+    align-items: center;
+    margin-right: 4px; }
+    .pan__item::after, .pan__item_home::after, .pan__item_thispage::after {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin-left: 4px; }
+    .pan__item a, .pan__item_home a, .pan__item_thispage a {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem; }
+      .no-js .pan__item a:hover, .no-js .pan__item_home a:hover, .no-js .pan__item_thispage a:hover,
+      .no-touchevents .pan__item a:hover,
+      .no-touchevents .pan__item_home a:hover,
+      .no-touchevents .pan__item_thispage a:hover,
+      .touchevents .pan__item a.touch,
+      .touchevents .pan__item_home a.touch,
+      .touchevents .pan__item_thispage a.touch, .pan__item a:hover, .pan__item_home a:hover, .pan__item_thispage a:hover {
+        text-decoration: underline; }
+    .pan__item_home a span {
+      display: none; }
+    .pan__item_home a::before {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; }
+    .pan__item_thispage::after {
+      display: none; }
+
+.conts__item {
+  margin-top: 48px;
+  margin-bottom: 48px; }
+  .conts__item:first-child {
+    margin-top: 0; }
+  .conts__item:last-child {
+    margin-bottom: 0; }
+
+.side__item {
+  box-sizing: border-box;
+  padding: 8px;
+  border-left: 2px solid #4D5269;
+  margin-bottom: 24px;
+  background-color: #fbfbfb; }
+
+.footer {
+  box-sizing: border-box;
+  border-top: 1px solid #eee; }
+  @media screen and (max-width: 970px) {
+    .footer {
+      margin-top: 8px; } }
+  .footer__add {
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 8px; }
+
+.fnav {
+  border-bottom: 1px solid #eee; }
+  .fnav__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    @media screen and (min-width: 667px) {
+      .fnav__row {
+        box-sizing: border-box;
+        max-width: 1360px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 24px; } }
+  @media screen and (min-width: 667px) and (max-width: 666px) {
+    .fnav__row {
+      padding: 0 16px; } }
+    @media screen and (max-width: 666px) {
+      .fnav__row {
+        display: block; } }
+  .fnav__item, .fnav__item_home, .fnav__item_template, .fnav__item_sample, .fnav__item_layout, .fnav__item_contact {
+    max-width: 100%;
+    flex: 1 1 100%; }
+    .fnav__item a, .fnav__item_home a, .fnav__item_template a, .fnav__item_sample a, .fnav__item_layout a, .fnav__item_contact a {
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 45px;
+      text-decoration: none; }
+      @media screen and (min-width: 667px) {
+        .fnav__item a, .fnav__item_home a, .fnav__item_template a, .fnav__item_sample a, .fnav__item_layout a, .fnav__item_contact a {
+          border-left: 1px solid #eee; } }
+      .no-js .fnav__item a:hover, .no-js .fnav__item_home a:hover, .no-js .fnav__item_template a:hover, .no-js .fnav__item_sample a:hover, .no-js .fnav__item_layout a:hover, .no-js .fnav__item_contact a:hover,
+      .no-touchevents .fnav__item a:hover,
+      .no-touchevents .fnav__item_home a:hover,
+      .no-touchevents .fnav__item_template a:hover,
+      .no-touchevents .fnav__item_sample a:hover,
+      .no-touchevents .fnav__item_layout a:hover,
+      .no-touchevents .fnav__item_contact a:hover,
+      .touchevents .fnav__item a.touch,
+      .touchevents .fnav__item_home a.touch,
+      .touchevents .fnav__item_template a.touch,
+      .touchevents .fnav__item_sample a.touch,
+      .touchevents .fnav__item_layout a.touch,
+      .touchevents .fnav__item_contact a.touch, .fnav__item a:hover, .fnav__item_home a:hover, .fnav__item_template a:hover, .fnav__item_sample a:hover, .fnav__item_layout a:hover, .fnav__item_contact a:hover {
+        background-color: #eee;
+        color: #fff; }
+      @media screen and (max-width: 666px) {
+        .fnav__item a, .fnav__item_home a, .fnav__item_template a, .fnav__item_sample a, .fnav__item_layout a, .fnav__item_contact a {
+          padding: 0 8px;
+          justify-content: flex-start;
+          border-bottom: 1px solid #eee; }
+          .fnav__item a::after, .fnav__item_home a::after, .fnav__item_template a::after, .fnav__item_sample a::after, .fnav__item_layout a::after, .fnav__item_contact a::after {
+            content: "";
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            font-weight: bold;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: absolute;
+            right: 8px;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center; } }
+    body.home .fnav__item_home a {
+      background-color: #eee;
+      color: #fff; }
+    body._template .fnav__item_template a {
+      background-color: #eee;
+      color: #fff; }
+    body.sample .fnav__item_sample a {
+      background-color: #eee;
+      color: #fff; }
+    body._layout .fnav__item_layout a {
+      background-color: #eee;
+      color: #fff; }
+    .fnav__item_contact a {
+      background-color: #4D5269;
+      color: #eee; }
+    body.contact .fnav__item_contact a {
+      background-color: #eee;
+      color: #fff; }
+
+/*
+---
+name: footadr
+category:
+  - common/footer/footadr
+tag:
+  - base
+compile: false
+---
+
+フッターの諸情報（コピーライト等）を整理します
+
+```html
+<address class="footer__add footadr">
+  <div class="footadr__copyright"><span class="footadr__mark">&copy;</span> 2019 Cakizaki</div>
+</address>
+```
+*/
+.footadr__copyright {
+  font-style: normal;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.footadr__mark {
+  font-size: 1.6rem;
+  margin-right: 4px;
+  position: relative;
+  top: 1px; }
+
+/*
+---
+name: u-img
+category:
+  - common/unit/u-img
+tag:
+  - base
+compile: false
+---
+
+画像に対する動作を指定します。
+例：レスポンシブWEBデザイン（リキッド）に対応します。
+
+---
+
+classなし
+```html
+<img
+data-src="../../../../../lib/img/dummy/yamato.png"
+alt="dummy">
+```
+classあり※レスポンシブWEBデザイン（リキッド）
+```html
+<img
+data-src="../../../../../lib/img/dummy/yamato.png"
+alt="dummy"
+class="u-img__max">
+```
+
+class/max-widthあり※レスポンシブWEBデザイン（リキッド）
+```html
+<img
+data-src="../../../../../lib/img/dummy/yamato.png"
+alt="dummy"
+style="max-width:500px;"
+class="u-img__max">
+```
+*/
+.u-img__max {
+  max-width: 100%;
+  width: 100%;
+  height: auto; }
+
+/*
+---
+name: u-btn
+category:
+  - common/unit/u-btn
+tag:
+  - base
+compile: false
+---
+
+u-btn(botton)
+
+ボタン制作をサポートします。
+※IE11のみ改行が入ってもボタンサイズ（高さ）が変更にならないので注意。
+
+```html
+<a href="#" class="u-btn__item">w100%ボタン</a>
+<a href="#" class="u-btn__item_s">ボタン</a>
+<a href="#" class="u-btn__item_m">ボタン</a>
+<a href="#" class="u-btn__item_l">ボタン</a>
+```
+```html
+<div class="u-btn">
+<a href="#" class="u-btn__item_s">ボタン</a>
+<a href="#" class="u-btn__item_point_s">ボタン</a>
+</div>
+```
+```html
+<div class="u-btn">
+<a href="#" class="u-btn__item">ボタン</a>
+<a href="#" class="u-btn__item">ボタン</a>
+<a href="#" class="u-btn__item">ボタン</a>
+</div>
+```
+```html
+<div class="u-btn">
+<a href="#" class="u-btn__item">ボタン</a>
+<a href="#" class="u-btn__item">ボタン</a>
+<a href="#" class="u-btn__item">ボタン</a>
+<a href="#" class="u-btn__item">ボタン</a>
+</div>
+```
+```html
+<a href="#" class="u-btn__item">ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト</a>
+<div class="u-btn">
+<a href="#" class="u-btn__item_s">ボタン</a>
+<a href="#" class="u-btn__item_s">ダミーテキストダミーテキストダミーテキストダミーテキスト</a>
+</div>
+<div class="u-btn">
+<a href="#" class="u-btn__item_s u-icon__link">ボタン</a>
+<a href="#" class="u-btn__item_s">ダミーテキストダミーテキストダミーテキストダミーテキスト</a>
+</div>
+```
+*/
+.u-btn {
+  display: flex;
+  justify-content: center;
+  margin-left: -8px;
+  margin-right: -8px; }
+  @media screen and (max-width: 666px) {
+    .u-btn {
+      margin-right: 0;
+      margin-left: 0;
+      flex-wrap: wrap; } }
+  .u-btn > .u-btn__item, .u-btn > .u-btn__item_s, .u-btn > .u-btn__item_point_s, .u-btn > .u-btn__item_weak_s, .u-btn > .u-btn__item_m, .u-btn > .u-btn__item_point_m, .u-btn > .u-btn__item_weak_m, .u-btn > .u-btn__item_l, .u-btn > .u-btn__item_point_l, .u-btn > .u-btn__item_weak_l, .u-btn > .u-btn__item_point, .u-btn > .u-btn__item_weak {
+    margin-right: 8px;
+    margin-left: 8px; }
+    @media screen and (max-width: 666px) {
+      .u-btn > .u-btn__item, .u-btn > .u-btn__item_s, .u-btn > .u-btn__item_point_s, .u-btn > .u-btn__item_weak_s, .u-btn > .u-btn__item_m, .u-btn > .u-btn__item_point_m, .u-btn > .u-btn__item_weak_m, .u-btn > .u-btn__item_l, .u-btn > .u-btn__item_point_l, .u-btn > .u-btn__item_weak_l, .u-btn > .u-btn__item_point, .u-btn > .u-btn__item_weak {
+        margin-right: 0;
+        margin-left: 0;
+        max-width: 100%;
+        flex: 0 0 100%; } }
+  .u-btn__item, .u-btn__item_s, .u-btn__item_point_s, .u-btn__item_weak_s, .u-btn__item_m, .u-btn__item_point_m, .u-btn__item_weak_m, .u-btn__item_l, .u-btn__item_point_l, .u-btn__item_weak_l, .u-btn__item_point, .u-btn__item_weak {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 100%;
+    min-height: 45px;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    padding: 8px;
+    border: 1px solid #ed6d3d;
+    color: #ed6d3d;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); }
+    @media all and (-ms-high-contrast: none) {
+      .u-btn__item, .u-btn__item_s, .u-btn__item_point_s, .u-btn__item_weak_s, .u-btn__item_m, .u-btn__item_point_m, .u-btn__item_weak_m, .u-btn__item_l, .u-btn__item_point_l, .u-btn__item_weak_l, .u-btn__item_point, .u-btn__item_weak {
+        height: 45px; } }
+    .no-js .u-btn__item:hover, .no-js .u-btn__item_s:hover, .no-js .u-btn__item_point_s:hover, .no-js .u-btn__item_weak_s:hover, .no-js .u-btn__item_m:hover, .no-js .u-btn__item_point_m:hover, .no-js .u-btn__item_weak_m:hover, .no-js .u-btn__item_l:hover, .no-js .u-btn__item_point_l:hover, .no-js .u-btn__item_weak_l:hover, .no-js .u-btn__item_point:hover, .no-js .u-btn__item_weak:hover,
+    .no-touchevents .u-btn__item:hover,
+    .no-touchevents .u-btn__item_s:hover,
+    .no-touchevents .u-btn__item_point_s:hover,
+    .no-touchevents .u-btn__item_weak_s:hover,
+    .no-touchevents .u-btn__item_m:hover,
+    .no-touchevents .u-btn__item_point_m:hover,
+    .no-touchevents .u-btn__item_weak_m:hover,
+    .no-touchevents .u-btn__item_l:hover,
+    .no-touchevents .u-btn__item_point_l:hover,
+    .no-touchevents .u-btn__item_weak_l:hover,
+    .no-touchevents .u-btn__item_point:hover,
+    .no-touchevents .u-btn__item_weak:hover,
+    .touchevents .u-btn__item.touch,
+    .touchevents .touch.u-btn__item_s,
+    .touchevents .touch.u-btn__item_point_s,
+    .touchevents .touch.u-btn__item_weak_s,
+    .touchevents .touch.u-btn__item_m,
+    .touchevents .touch.u-btn__item_point_m,
+    .touchevents .touch.u-btn__item_weak_m,
+    .touchevents .touch.u-btn__item_l,
+    .touchevents .touch.u-btn__item_point_l,
+    .touchevents .touch.u-btn__item_weak_l,
+    .touchevents .touch.u-btn__item_point,
+    .touchevents .touch.u-btn__item_weak, .u-btn__item:hover, .u-btn__item_s:hover, .u-btn__item_point_s:hover, .u-btn__item_weak_s:hover, .u-btn__item_m:hover, .u-btn__item_point_m:hover, .u-btn__item_weak_m:hover, .u-btn__item_l:hover, .u-btn__item_point_l:hover, .u-btn__item_weak_l:hover, .u-btn__item_point:hover, .u-btn__item_weak:hover {
+      background-color: #ed6d3d;
+      color: #fff; }
+    .u-btn__item_s, .u-btn__item_point_s, .u-btn__item_weak_s {
+      max-width: 160px; }
+    .u-btn__item_m, .u-btn__item_point_m, .u-btn__item_weak_m {
+      max-width: 320px; }
+    .u-btn__item_l, .u-btn__item_point_l, .u-btn__item_weak_l {
+      max-width: 666px; }
+    .u-btn__item_point, .u-btn__item_point_s, .u-btn__item_point_m, .u-btn__item_point_l, .u-btn__item_weak_s, .u-btn__item_weak_m, .u-btn__item_weak_l {
+      background-color: #4D5269;
+      border-color: #4D5269;
+      color: #fff; }
+      .no-js .u-btn__item_point:hover, .no-js .u-btn__item_point_s:hover, .no-js .u-btn__item_point_m:hover, .no-js .u-btn__item_point_l:hover, .no-js .u-btn__item_weak_s:hover, .no-js .u-btn__item_weak_m:hover, .no-js .u-btn__item_weak_l:hover,
+      .no-touchevents .u-btn__item_point:hover,
+      .no-touchevents .u-btn__item_point_s:hover,
+      .no-touchevents .u-btn__item_point_m:hover,
+      .no-touchevents .u-btn__item_point_l:hover,
+      .no-touchevents .u-btn__item_weak_s:hover,
+      .no-touchevents .u-btn__item_weak_m:hover,
+      .no-touchevents .u-btn__item_weak_l:hover,
+      .touchevents .u-btn__item_point.touch,
+      .touchevents .touch.u-btn__item_point_s,
+      .touchevents .touch.u-btn__item_point_m,
+      .touchevents .touch.u-btn__item_point_l,
+      .touchevents .touch.u-btn__item_weak_s,
+      .touchevents .touch.u-btn__item_weak_m,
+      .touchevents .touch.u-btn__item_weak_l, .u-btn__item_point:hover, .u-btn__item_point_s:hover, .u-btn__item_point_m:hover, .u-btn__item_point_l:hover, .u-btn__item_weak_s:hover, .u-btn__item_weak_m:hover, .u-btn__item_weak_l:hover {
+        background-color: #2d303d;
+        border-color: #2d303d; }
+    .u-btn__item_weak {
+      background-color: #eee;
+      border-color: #4D5269;
+      color: #fff; }
+      .no-js .u-btn__item_weak:hover,
+      .no-touchevents .u-btn__item_weak:hover,
+      .touchevents .u-btn__item_weak.touch, .u-btn__item_weak:hover {
+        background-color: #2d303d;
+        border-color: #2d303d; }
+
+/*
+---
+name: u-icon
+category:
+  - common/unit/u-icon
+tag:
+  - base
+compile: false
+---
+
+リンクなどのアイコン設置をサポートします。
+
+```html
+<a href="#">link</a>
+<a href="#" class="u-icon__link">link</a>
+<a href="#" class="u-icon__link" target="_blank">link</a>
+<a href="#" class="u-icon__link" target="_blank" rel="nofollow">link</a>
+<a href="#.pdf" class="u-icon__link">link</a>
+```
+*/
+.u-icon, .u-icon__link {
+  box-sizing: border-box; }
+  .u-icon__link::after {
+    content: "";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    font-weight: bold;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0 4px 0 4px;
+    font-weight: bold;
+    transition: all .3s; }
+  .u-icon__link[target='_blank']::after {
+    content: "\f360"; }
+  .u-icon__link[rel='nofollow']::after {
+    content: "\f35d"; }
+  .u-icon__link[href*='.pdf']::after {
+    content: "\f1c1"; }
+  .no-js .u-icon__link:hover::after,
+  .no-touchevents .u-icon__link:hover::after,
+  .touchevents .u-icon__link.touch::after, .u-icon__link:hover::after {
+    transform: translate3d(2px, 0, 0);
+    transition: all .3s; }
+
+/*
+---
+name: u-small
+category:
+  - common/unit/u-small
+tag:
+  - base
+compile: false
+---
+
+キャプションにします。
+
+```html
+<small class="u-small">※キャプションです。</small>
+<p class="u-small">※キャプションです。</p>
+```
+*/
+.u-small {
+  color: #535364;
+  font-size: 1.2rem; }
+
+/*
+---
+name: u-figure
+category:
+  - common/unit/u-figure
+tag:
+  - base
+compile: false
+---
+
+画像のキャプション表示をサポートします。
+
+```html
+<figure class="u-figure">
+  <img
+  data-src="../../../../../lib/img/dummy/bronze.png"
+  alt="dummy"
+  class="u-img__max">
+  <figcaption class="u-figure__cap">右下にキャプションが入ります。</figcaption>
+</figure>
+```
+```html
+<figure class="u-figure">
+  <img
+  data-src="../../../../../lib/img/dummy/bronze.png"
+  alt="dummy"
+  class="u-img__max">
+  <figcaption class="u-figure__cap_darken">黒いキャプションが入ります。</figcaption>
+</figure>
+```
+```html
+<figure class="u-figure">
+  <img
+  data-src="../../../../../lib/img/dummy/bronze.png"
+  alt="dummy"
+  class="u-img__max">
+  <figcaption class="u-figure__cap_left">キャプションが左に入ります。</figcaption>
+</figure>
+```
+*/
+.u-figure {
+  position: relative; }
+  .u-figure__cap, .u-figure__cap_darken, .u-figure__cap_left, .u-figure__cap_left_darken {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    font-size: 1.1rem;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #eee;
+    text-shadow: 0px 0px 3px #000; }
+    .u-figure__cap_darken {
+      color: #000;
+      text-shadow: 0px 0px 3px #fff; }
+    .u-figure__cap_left {
+      right: auto;
+      left: 8px; }
+      .u-figure__cap_left_darken {
+        color: #000;
+        text-shadow: 0px 0px 3px #fff; }
+
+/*
+---
+name: u-only(hide)
+category:
+  - common/unit/u-only(hide)
+tag:
+  - base
+compile: false
+---
+
+PC版（タブレット〜PCサイズ）とSP版で、表示非表示を切り替えます。
+
+```html
+<div class="u-only__pc" style="background:yellow">PCサイズのみで表示</div>
+<div class="u-only__sp" style="background:red">SPサイズのみで表示</div>
+```
+*/
+.u-only__pc {
+  display: none; }
+  @media screen and (min-width: 971px) {
+    .u-only__pc {
+      display: block; } }
+
+.u-only__sp {
+  display: none; }
+  @media screen and (max-width: 970px) {
+    .u-only__sp {
+      display: block; } }
+
+/*
+---
+name: u-ttl(title)
+category:
+  - common/unit/u-ttl
+tag:
+  - base
+compile: false
+---
+
+見出し関連のサイズを調整します。
+
+```html
+<h3 class="u-ttl_l">大きい見出し</h3>
+<p>見出し説明テキスト<br>説明テキスト説明テキスト</p>
+```
+```html
+<h3 class="u-ttl_m">小見出し見出し</h3>
+<p>見出し説明テキスト<br>説明テキスト説明テキスト</p>
+```
+```html
+<h3 class="u-ttl_s">小見出し見出し</h3>
+<p>見出し説明テキスト<br>説明テキスト説明テキスト</p>
+```
+*/
+.u-ttl_l {
+  box-sizing: border-box;
+  margin: 4em 0 1em;
+  font-feature-settings: 'palt';
+  line-height: 1.4;
+  font-size: 3rem;
+  color: #3C3C48; }
+  .u-ttl_l:first-child {
+    margin-top: 0; }
+  @media screen and (max-width: 666px) {
+    .u-ttl_l {
+      font-size: 2.4rem; } }
+
+.u-ttl_m {
+  box-sizing: border-box;
+  margin: 3em 0 1em;
+  padding-bottom: .5em;
+  font-feature-settings: 'palt';
+  line-height: 1.4;
+  font-size: 2rem;
+  color: #000;
+  border-bottom: 2px dotted #eee; }
+  @media screen and (max-width: 666px) {
+    .u-ttl_m {
+      font-size: 1.8rem; } }
+  .u-ttl_m:first-child {
+    margin-top: 0; }
+
+.u-ttl_s {
+  box-sizing: border-box;
+  color: #000;
+  margin-bottom: 1em;
+  line-height: 1.4;
+  margin: 1em 0 .5em;
+  font-feature-settings: 'palt'; }
+  .u-ttl_s:first-child {
+    margin-top: 0; }
+
+/*
+---
+name: u-assit(box)
+category:
+  - common/unit/u-assist
+tag:
+  - base
+compile: false
+---
+
+サポート情報用のエリアを制作します。
+
+```html
+<aside class="u-assist">
+<p>サポート情報</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur cumque, inventore, voluptatem eaque quaerat voluptas sapiente itaque quae unde ea praesentium vel magni. Deserunt dolor, velit adipisci unde, recusandae reprehenderit.</p>
+</aside>
+```
+*/
+.u-assist {
+  box-sizing: border-box;
+  background-color: #fbfbfb;
+  padding: 24px;
+  border: 1px solid #eee;
+  border-radius: 2px; }
+  @media screen and (max-width: 666px) {
+    .u-assist {
+      padding: 8px; } }
+  .u-assist > p:last-child {
+    margin-bottom: 0; }
+
+/*
+---
+name: u-position
+category:
+- common/unit/u-position
+tag:
+- base
+compile: false
+---
+
+block要素やblock内の要素の位置を調整します。
+ちょっと使いにくいかな。
+
+---
+
+##### 内包するインライン要素の位置を調整
+
+```html
+<div class="u-position_center" style="background:yellow;">
+center
+</div>
+```
+```html
+<div class="u-position_left" style="background:yellow;">
+center
+</div>
+```
+```html
+<div class="u-position_right" style="background:yellow;">
+center
+</div>
+```
+
+----
+
+##### block要素自身の位置を調整
+
+```html
+<div class="u-position__item_center" style="background:yellow; width:100px;">
+center
+</div>
+```
+
+```html
+<div class="u-position__item_left" style="background:yellow; width:100px;">
+center
+</div>
+```
+
+```html
+<div class="u-position__item_right" style="background:yellow; width:100px;">
+center
+</div>
+```
+*/
+.u-position_center {
+  text-align: center; }
+
+.u-position_left {
+  text-align: left; }
+
+.u-position_right {
+  text-align: right; }
+
+.u-position__item_center {
+  margin-left: auto;
+  margin-right: auto; }
+
+.u-position__item_left {
+  margin-right: auto; }
+
+.u-position__item_right {
+  margin-left: auto; }
+
+/*
+---
+name: u-list
+category:
+- common/unit/u-lsit
+tag:
+- base
+compile: false
+---
+
+リストまで
+
+```html
+<ul class="u-list__ul">
+<li>dummy</li>
+<li>dummy</li>
+<li>dummy</li>
+</ul>
+```
+```html
+
+
+*/
+.u-list, .u-list__ul {
+  margin-bottom: 0; }
+  .u-list > li, .u-list__ul > li {
+    color: #000; }
+  .u-list__ul > li {
+    list-style: disc;
+    margin-left: 24px; }
+
+/*
+---
+name: u-pagination(hide)
+category:
+- common/unit/u-pagination
+tag:
+- base
+compile: false
+---
+
+ページネーションを調整します
+
+```html
+<nav>
+  <ul class="u-pagination">
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_first"><span>&laquo;</span></label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_prev"><span>&lt;</span></label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link">1</label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link">2</label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link">3</label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_next"><span>&gt;</span></label>
+    </li>
+    <li class="u-pagination__item">
+      <label class="u-pagination__link_last"><span>&raquo;</span></label>
+    </li>
+  </ul>
+</nav>
+```
+*/
+.u-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .u-pagination__item:first-child .u-pagination__link, .u-pagination__item:first-child .u-pagination__link_first, .u-pagination__item:first-child .u-pagination__link_prev, .u-pagination__item:first-child .u-pagination__link_next, .u-pagination__item:first-child .u-pagination__link_last {
+    border-radius: 3px 0 0 3px; }
+  .u-pagination__item:last-child .u-pagination__link, .u-pagination__item:last-child .u-pagination__link_first, .u-pagination__item:last-child .u-pagination__link_prev, .u-pagination__item:last-child .u-pagination__link_next, .u-pagination__item:last-child .u-pagination__link_last {
+    border-radius: 0 3px 3px 0; }
+  .u-pagination__item.active .u-pagination__link, .u-pagination__item.active .u-pagination__link_first, .u-pagination__item.active .u-pagination__link_prev, .u-pagination__item.active .u-pagination__link_next, .u-pagination__item.active .u-pagination__link_last {
+    background-color: #ed6d3d;
+    color: #fff;
+    font-weight: bold; }
+  .u-pagination__link, .u-pagination__link_first, .u-pagination__link_prev, .u-pagination__link_next, .u-pagination__link_last {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    padding: 0 12px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    margin-right: -1px;
+    font-size: 1.2rem; }
+    .u-pagination__link span, .u-pagination__link_first span, .u-pagination__link_prev span, .u-pagination__link_next span, .u-pagination__link_last span {
+      display: none; }
+    .no-js .u-pagination__link:hover, .no-js .u-pagination__link_first:hover, .no-js .u-pagination__link_prev:hover, .no-js .u-pagination__link_next:hover, .no-js .u-pagination__link_last:hover,
+    .no-touchevents .u-pagination__link:hover,
+    .no-touchevents .u-pagination__link_first:hover,
+    .no-touchevents .u-pagination__link_prev:hover,
+    .no-touchevents .u-pagination__link_next:hover,
+    .no-touchevents .u-pagination__link_last:hover,
+    .touchevents .u-pagination__link.touch,
+    .touchevents .touch.u-pagination__link_first,
+    .touchevents .touch.u-pagination__link_prev,
+    .touchevents .touch.u-pagination__link_next,
+    .touchevents .touch.u-pagination__link_last, .u-pagination__link:hover, .u-pagination__link_first:hover, .u-pagination__link_prev:hover, .u-pagination__link_next:hover, .u-pagination__link_last:hover {
+      background-color: #ed6d3d;
+      color: #fff;
+      cursor: pointer; }
+    .u-pagination__link_first::before {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; }
+    .u-pagination__link_prev::before {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; }
+    .u-pagination__link_next::before {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; }
+    .u-pagination__link_last::before {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; }
+
+/*
+---
+name: u-table
+category:
+- common/unit/u-table
+tag:
+- base
+compile: false
+---
+
+テーブル
+
+```html
+<table class="u-table">
+  <caption class='u-ttl_m'>テーブルサンプル</caption>
+  <colgroup>
+    <col span="1" style="width:30%;">
+    <col span="3" style="width:20%;">
+    <col span="1" style="width:10%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+      <th>{{ key }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="key">長いvalueです。ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー</td>
+      <td data-label="長いkeyです。ダミーダミーダミーダミー。">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+    </tr>
+    <tr>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+    </tr>
+    <tr>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+      <td data-label="key">{{ value }}</td>
+    </tr>
+  </tbody>
+</table>
+```
+*/
+.u-table {
+  border-collapse: collapse;
+  width: 100%; }
+  .u-table tr {
+    border: 1px solid #c8c8c8; }
+  .u-table th,
+  .u-table td {
+    border: 1px solid #c8c8c8;
+    padding: 4px; }
+    @media screen and (min-width: 667px) {
+      .u-table th span,
+      .u-table td span {
+        display: none; } }
+  .u-table th {
+    background-color: #f3a283;
+    color: #000;
+    vertical-align: middle; }
+  @media screen and (max-width: 666px) {
+    .u-table {
+      font-size: 1.4rem; }
+      .u-table thead {
+        display: none; }
+      .u-table tr {
+        display: block;
+        border: none;
+        margin-bottom: 8px; }
+        .u-table tr:last-child {
+          margin-bottom: 0; }
+      .u-table th,
+      .u-table td {
+        box-sizing: border-box;
+        display: flex;
+        width: 100%;
+        margin-top: -1px;
+        padding: 8px;
+        line-height: 1.4; }
+        .u-table th::before,
+        .u-table td::before {
+          content: attr(data-label);
+          max-width: 100px;
+          flex: 0 0 100px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          padding: 8px;
+          margin: -8px;
+          margin-right: 8px;
+          background-color: #eee;
+          font-weight: bold; } }
+
+.u-iframe {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background-color: #3C3C48; }
+  .u-iframe > iframe,
+  .u-iframe > object,
+  .u-iframe > embed {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; }
+
+/*
+---
+name: etc
+category:
+  - common/unit/etc
+tag:
+  - base
+compile: false
+---
+
+マージン関連のサポート
+
+```html
+<div class="mb1" style="background:black;">test</div>
+<div class="mb2" style="background:black;">test</div>
+<div class="mb3" style="background:black;">test</div>
+<div class="mb4" style="background:black;">test</div>
+<div class="mt1" style="background:black;">test</div>
+<div class="mt2" style="background:black;">test</div>
+<div class="mt3" style="background:black;">test</div>
+<div class="mt4" style="background:black;">test</div>
+```
+*/
+.mb {
+  margin-bottom: 24px; }
+  @media screen and (max-width: 666px) {
+    .mb {
+      margin-bottom: 8px; } }
+
+.mb0 {
+  margin-bottom: 0px; }
+
+.mb1 {
+  margin-bottom: 8px; }
+
+.mb2 {
+  margin-bottom: 16px; }
+
+.mb3 {
+  margin-bottom: 24px; }
+
+.mb4 {
+  margin-bottom: 32px; }
+
+.mb5 {
+  margin-bottom: 40px; }
+
+.mb6 {
+  margin-bottom: 48px; }
+
+.mb7 {
+  margin-bottom: 56px; }
+
+.mb8 {
+  margin-bottom: 64px; }
+
+.mb9 {
+  margin-bottom: 72px; }
+
+.mb10 {
+  margin-bottom: 80px; }
+
+.mt0 {
+  margin-top: 0px; }
+
+.mt1 {
+  margin-top: 8px; }
+
+.mt2 {
+  margin-top: 16px; }
+
+.mt3 {
+  margin-top: 24px; }
+
+.mt4 {
+  margin-top: 32px; }
+
+.mt5 {
+  margin-top: 40px; }
+
+.mt6 {
+  margin-top: 48px; }
+
+.mt7 {
+  margin-top: 56px; }
+
+.mt8 {
+  margin-top: 64px; }
+
+.mt9 {
+  margin-top: 72px; }
+
+.mt10 {
+  margin-top: 80px; }
+
+.pb0 {
+  padding-bottom: 0px; }
+
+.pb1 {
+  padding-bottom: 8px; }
+
+.pb2 {
+  padding-bottom: 16px; }
+
+.pb3 {
+  padding-bottom: 24px; }
+
+.pb4 {
+  padding-bottom: 32px; }
+
+.pb5 {
+  padding-bottom: 40px; }
+
+.pb6 {
+  padding-bottom: 48px; }
+
+.pb7 {
+  padding-bottom: 56px; }
+
+.pb8 {
+  padding-bottom: 64px; }
+
+.pb9 {
+  padding-bottom: 72px; }
+
+.pb10 {
+  padding-bottom: 80px; }
+
+.pt0 {
+  padding-top: 0px; }
+
+.pt1 {
+  padding-top: 8px; }
+
+.pt2 {
+  padding-top: 16px; }
+
+.pt3 {
+  padding-top: 24px; }
+
+.pt4 {
+  padding-top: 32px; }
+
+.pt5 {
+  padding-top: 40px; }
+
+.pt6 {
+  padding-top: 48px; }
+
+.pt7 {
+  padding-top: 56px; }
+
+.pt8 {
+  padding-top: 64px; }
+
+.pt9 {
+  padding-top: 72px; }
+
+.pt10 {
+  padding-top: 80px; }
+
+/*
+---
+name: u-sns
+category:
+- common/unit/u-sns
+tag:
+- base
+compile: false
+---
+
+SNSボタンを追加します
+
+```html
+<ul class="u-sns">
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_twitter"><span class="u-sns__label">Twitter</span></a>
+  </li>
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_facebook"><span class="u-sns__label">Facebook</span></a>
+  </li>
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_youtube"><span class="u-sns__label">Youtube</span></a>
+  </li>
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_instagram"><span class="u-sns__label">Instagram</span></a>
+  </li>
+</ul>
+```
+*/
+.u-sns {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .u-sns__item {
+    margin: 0 4px; }
+  .u-sns__icon, .u-sns__icon_facebook, .u-sns__icon_twitter, .u-sns__icon_youtube, .u-sns__icon_instagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    text-decoration: none; }
+    .u-sns__icon::before, .u-sns__icon_facebook::before, .u-sns__icon_twitter::before, .u-sns__icon_youtube::before, .u-sns__icon_instagram::before {
+      content: "";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: normal; }
+    .no-js .u-sns__icon:hover, .no-js .u-sns__icon_facebook:hover, .no-js .u-sns__icon_twitter:hover, .no-js .u-sns__icon_youtube:hover, .no-js .u-sns__icon_instagram:hover,
+    .no-touchevents .u-sns__icon:hover,
+    .no-touchevents .u-sns__icon_facebook:hover,
+    .no-touchevents .u-sns__icon_twitter:hover,
+    .no-touchevents .u-sns__icon_youtube:hover,
+    .no-touchevents .u-sns__icon_instagram:hover,
+    .touchevents .u-sns__icon.touch,
+    .touchevents .touch.u-sns__icon_facebook,
+    .touchevents .touch.u-sns__icon_twitter,
+    .touchevents .touch.u-sns__icon_youtube,
+    .touchevents .touch.u-sns__icon_instagram, .u-sns__icon:hover, .u-sns__icon_facebook:hover, .u-sns__icon_twitter:hover, .u-sns__icon_youtube:hover, .u-sns__icon_instagram:hover {
+      transition: all .5s;
+      opacity: .8;
+      transform: translateY(-5px); }
+    .u-sns__icon_facebook {
+      background-color: #3B5998; }
+      .u-sns__icon_facebook::before {
+        content: "\f09a"; }
+    .u-sns__icon_twitter {
+      background-color: #55acee; }
+      .u-sns__icon_twitter::before {
+        content: "\f099"; }
+    .u-sns__icon_youtube {
+      background-color: #EC3324; }
+      .u-sns__icon_youtube::before {
+        content: "\f167"; }
+    .u-sns__icon_instagram {
+      background-color: #CDA98A; }
+      .u-sns__icon_instagram::before {
+        content: "\f16d"; }
+  .u-sns__label {
+    display: none; }
+
+body.l-page-column .main__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+body.l-page-column .main__conts {
+  box-sizing: border-box;
+  max-width: 820px;
+  flex: 1 1 calc(100% - 300px - 48px);
+  padding: 24px;
+  border: 1px solid #eee; }
+  @media screen and (max-width: 970px) {
+    body.l-page-column .main__conts {
+      max-width: 100%;
+      flex: 0 0 100%;
+      margin-bottom: 24px; } }
+
+body.l-page-column .main__side {
+  min-width: 300px;
+  flex: 1 1 300px;
+  margin-left: 48px; }
+  @media screen and (max-width: 970px) {
+    body.l-page-column .main__side {
+      margin-left: 0;
+      max-width: 100%;
+      flex: 0 0 100%; } }
+
+body.l-page-full .main__row {
+  position: relative; }
+
+body.l-page-full .main__conts {
+  margin: 0 -1100px; }
+
+body.l-page-full .conts__item {
+  width: 100vw;
+  margin-left: auto;
+  margin-right: auto; }
+
+body.l-page-single .main__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+body.l-page-single .main__conts {
+  box-sizing: border-box;
+  max-width: 820px;
+  flex: 1 1 calc(100% - 300px - 48px);
+  padding: 24px;
+  border: 1px solid #eee; }
+  @media screen and (max-width: 970px) {
+    body.l-page-single .main__conts {
+      max-width: 100%;
+      flex: 0 0 100%;
+      margin-bottom: 24px; } }
+
+/*
+---
+name: l-full
+category:
+- common/layout/l-full
+tag:
+- layout
+compile: false
+---
+
+親要素から子要素をはみ出して表示。
+item要素の高さに合わせて親要素も高さを調整。
+
+```html
+<div class="l-full" style="background:#eee">
+  <br>
+  <div class="l-full__row" style="background:blue;">
+    <br>
+    <div class="l-full__item" style="background:yellow;">
+      fullspace
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+    <br>
+  </div>
+  <br>
+</div>
+```
+*/
+.l-full__row {
+  margin: 0 -1000px; }
+
+.l-full__item {
+  width: 100vw;
+  margin-left: auto;
+  margin-right: auto; }
+
+/*
+---
+name: l-culumn
+category:
+- common/layout/l-column
+tag:
+- layout
+compile: false
+---
+
+一定の間隔をあけた、カラムレイアウトを実現します
+
+---
+
+### 2カラム
+```html
+<div class="l-column">
+<div class="l-column__row">
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">one</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">two</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">three<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">four</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">five</div>
+</div>
+</div>
+</div>
+```
+
+### 3カラム
+```html
+<div class="l-column_3">
+<div class="l-column__row">
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">one</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">two</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">three<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">four</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">five</div>
+</div>
+</div>
+</div>
+```
+
+### 4カラム
+```html
+<div class="l-column_4">
+<div class="l-column__row">
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">one</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">two</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">three<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">four</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">five</div>
+</div>
+</div>
+</div>
+```
+*/
+@media screen and (min-width: 971px) {
+  .l-column_3 .l-column__item {
+    max-width: 33.33333%;
+    flex: 33.33333%; } }
+
+@media screen and (min-width: 667px) and (max-width: 970px) {
+  .l-column_3 .l-column__item {
+    max-width: 50%;
+    flex: 50%; } }
+
+@media screen and (min-width: 971px) {
+  .l-column_4 .l-column__item {
+    max-width: 25%;
+    flex: 25%; } }
+
+@media screen and (min-width: 667px) and (max-width: 970px) {
+  .l-column_4 .l-column__item {
+    max-width: 33.33333%;
+    flex: 33.33333%; } }
+
+.l-column__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  margin-right: -8px; }
+
+.l-column__item {
+  box-sizing: border-box;
+  display: flex;
+  max-width: 50%;
+  flex: 0 0 50%;
+  padding: 8px; }
+  @media screen and (max-width: 666px) {
+    .l-column__item {
+      max-width: 100%;
+      flex: 0 0 100%; } }
+
+.l-column__inner {
+  width: 100%; }
+
+body._etc .main-v__row {
+  position: relative;
+  margin-top: 24px;
+  background-color: #eee; }
+  @media screen and (max-width: 666px) {
+    body._etc .main-v__row {
+      margin-top: 8px; } }
+
+body._etc .main-v__item {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  opacity: 0; }
+  body._etc .main-v__item.active {
+    opacity: 1;
+    transition: all 1s; }
+
+body._etc .main-v__desc {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,42 @@
+.gnav{
+  &__row{
+    display: flex;
+  }
+  &__item{
+
+  }
+  &__link{
+    $link:&;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:  $header-height;
+    padding: 0 $bm;
+    text-decoration: none;
+    z-index: 2;
+    @include touch-hover(){
+      transition: all .3s;
+      background-color: $color-brand;
+      color: #fff;
+    }
+    @each $class in home,contact,_sample,_layout,_styleguide {
+      &.#{$class}{
+        body.#{$class} & {
+          color:$color-brand;
+        }
+      }
+    }//each
+    &_contact{
+      background-color: $color-point;
+      color:$color-light;
+    }
+    .gnav-deep & {
+      &::after{
+        @include icon-font('\f103');
+        margin-left: $bm/2;
+        font-weight: bold;
+      }
+    }
+  }//link
+}

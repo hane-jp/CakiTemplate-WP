@@ -1,0 +1,58 @@
+//bg-img
+
+@mixin media-mixin {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2) ,
+  only screen and (   min--moz-device-pixel-ratio: 2) ,
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx)
+  {
+    @content;
+  }
+}
+
+//背景画像
+@mixin img($imgURL, $extension:png, $repeat:repeat) {
+  $img-path:"#{$imgURL}.#{$extension}";
+  $img-path2x:"#{$imgURL}@2x.#{$extension}";
+  $w: image-width($img-path);
+  $h: image-height($img-path);
+  background-image: image-url($img-path);
+  background-size: $w $h;
+  background-repeat: $repeat;
+  @include media-mixin {
+    background-image: image-url($img-path2x);
+  }
+}
+
+//画像置換
+@mixin bg-img($imgURL, $extension:png,$repeat:repeat) {
+  $img-path:"#{$imgURL}.#{$extension}";
+  $img-path2x:"#{$imgURL}@2x.#{$extension}";
+  $w: image-width($img-path);
+  $h: image-height($img-path);
+  display: block;
+  overflow: hidden;
+  width: $w;
+  height: 0;
+  padding-top: $h;
+  background-image: image-url($img-path);
+  background-size: $w $h;
+  @include media-mixin {
+    background-image: image-url($img-path2x);
+  }
+}
+
+//cover背景画像
+@mixin cover-img($imgURL, $extension:png,$repeat:no-repeat) {
+    $img-path:"#{$imgURL}.#{$extension}";
+  $img-path2x:"#{$imgURL}@2x.#{$extension}";
+  background-image: image-url($img-path);
+  background-repeat: $repeat;
+  background-size: cover;
+  @include media-mixin{
+    background-image: image-url($img-path2x);
+  }
+}

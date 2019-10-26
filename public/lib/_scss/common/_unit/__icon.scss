@@ -1,0 +1,58 @@
+/*
+---
+name: u-icon
+category:
+  - common/unit/u-icon
+tag:
+  - base
+compile: false
+---
+
+リンクなどのアイコン設置をサポートします。
+
+```html
+<a href="#">link</a>
+<a href="#" class="u-icon__link">link</a>
+<a href="#" class="u-icon__link" target="_blank">link</a>
+<a href="#" class="u-icon__link" target="_blank" rel="nofollow">link</a>
+<a href="#.pdf" class="u-icon__link">link</a>
+```
+*/
+
+.u-icon{
+	$this:&;
+	box-sizing: border-box;
+	&__link{
+		@extend #{$this};
+		&::after{
+			@include icon-font('\f061');
+			margin: 0 $bm/2 0 $bm/2;
+			font-weight: bold;
+			transition: all .3s;
+		}
+		&[target='_blank']{
+			&::after{
+				content: "\f360";
+				// font-weight: normal;
+			}
+		}
+		&[rel='nofollow']{
+			&::after{
+				content: "\f35d";
+				// font-weight: normal;
+			}
+		}
+		&[href*='.pdf']{
+			&::after{
+				content: "\f1c1";
+				// font-weight: normal;
+			}
+		}
+		@include touch-hover(){
+			&::after{
+				transform: translate3d(2px ,0 ,0);
+				transition: all .3s;
+			}
+		}
+	}//icon
+}

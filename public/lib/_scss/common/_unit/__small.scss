@@ -1,0 +1,22 @@
+/*
+---
+name: u-small
+category:
+  - common/unit/u-small
+tag:
+  - base
+compile: false
+---
+
+キャプションにします。
+
+```html
+<small class="u-small">※キャプションです。</small>
+<p class="u-small">※キャプションです。</p>
+```
+*/
+
+.u-small{
+  color:$color-dark-lighten;
+	font-size: 1.2rem;
+}

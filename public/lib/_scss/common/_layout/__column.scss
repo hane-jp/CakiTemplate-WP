@@ -1,0 +1,131 @@
+/*
+---
+name: l-culumn
+category:
+- common/layout/l-column
+tag:
+- layout
+compile: false
+---
+
+一定の間隔をあけた、カラムレイアウトを実現します
+
+---
+
+### 2カラム
+```html
+<div class="l-column">
+<div class="l-column__row">
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">one</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">two</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">three<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">four</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">five</div>
+</div>
+</div>
+</div>
+```
+
+### 3カラム
+```html
+<div class="l-column_3">
+<div class="l-column__row">
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">one</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">two</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">three<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">four</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">five</div>
+</div>
+</div>
+</div>
+```
+
+### 4カラム
+```html
+<div class="l-column_4">
+<div class="l-column__row">
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">one</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">two</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">three<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy<br>dummy</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">four</div>
+</div>
+<div class="l-column__item">
+<div class="l-column__inner" style="background:#eee;">five</div>
+</div>
+</div>
+</div>
+```
+*/
+
+.l-column{
+  $this:".l-column";
+  &_3{
+    #{$this}__item{
+      @include min-screen($width-m + 1){
+        max-width: (100%/3);
+        flex: (100%/3);
+      }
+      @include screen($width-s + 1, $width-m){
+        max-width: (100%/2);
+        flex: (100%/2);
+      }
+    }
+  }
+  &_4{
+    #{$this}__item{
+      @include min-screen($width-m + 1px){
+        max-width: (100%/4);
+        flex: (100%/4);
+      }
+      @include screen($width-s + 1, $width-m){
+        max-width: (100%/3);
+        flex: (100%/3);
+      }
+    }
+  }
+  &__row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$bm;
+    margin-right: -$bm;
+  }
+  &__item{
+    box-sizing: border-box;
+    display: flex;
+    max-width: 50%;
+    flex: 0 0 50%;
+    padding: $bm;
+    @include max-screen($width-s){
+      max-width: 100%;
+      flex: 0 0 100%;
+    }
+  }
+  &__inner{
+    width: 100%;
+  }
+}

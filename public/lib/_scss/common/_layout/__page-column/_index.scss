@@ -1,0 +1,33 @@
+body.l-page-column .main{
+  $conts-width:820px;
+  $side-width:'300px';
+  $space:$bm-outer;
+
+  &__row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__conts{
+    box-sizing: border-box;
+    max-width: $conts-width;
+    flex: 1 1 calc(100% - #{$side-width} - #{$space});
+    padding: $bm-inner;
+    border: 1px solid $color-light;
+    @include max-screen($width-m){
+      max-width: 100%;
+      flex: 0 0 100%;
+      margin-bottom: $bm-inner;
+    }
+  }
+  &__side{
+    min-width: #{$side-width};
+    flex: 1 1 #{$side-width};
+    margin-left: #{$space};
+    @include max-screen($width-m){
+      margin-left: 0;
+      max-width: 100%;
+      flex: 0 0 100%;
+    }
+  }
+}

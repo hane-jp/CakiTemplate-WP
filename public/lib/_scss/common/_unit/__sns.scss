@@ -1,0 +1,92 @@
+/*
+---
+name: u-sns
+category:
+- common/unit/u-sns
+tag:
+- base
+compile: false
+---
+
+SNSボタンを追加します
+
+```html
+<ul class="u-sns">
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_twitter"><span class="u-sns__label">Twitter</span></a>
+  </li>
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_facebook"><span class="u-sns__label">Facebook</span></a>
+  </li>
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_youtube"><span class="u-sns__label">Youtube</span></a>
+  </li>
+  <li class="u-sns__item">
+    <a href="#" target="_blank" class="u-sns__icon_instagram"><span class="u-sns__label">Instagram</span></a>
+  </li>
+</ul>
+```
+*/
+
+.u-sns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__item{
+    margin: 0 $bm/2;
+  }
+  &__icon{
+    $icon :&;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    text-decoration: none;
+    &::before{
+      @include icon-font("\f09a");
+      color:#fff;
+      font-size: 1.8rem;
+      font-weight: normal;
+    }
+    @include touch-hover(){
+      transition: all .5s;
+      opacity: .8;
+      transform: translateY(-5px);
+    }
+    &_facebook{
+      @extend #{$icon};
+      background-color: $color-facebook;
+      &::before{
+        content: "\f09a";
+      }
+    }
+    &_twitter{
+      @extend #{$icon};
+      background-color: $color-twitter;
+      &::before{
+        content: "\f099";
+      }
+    }
+    &_youtube{
+      @extend #{$icon};
+      background-color: $color-youtube;
+      &::before{
+        content: "\f167";
+      }
+    }
+    &_instagram{
+      @extend #{$icon};
+      background-color: $color-instagram;
+      &::before{
+        content: "\f16d";
+      }
+    }
+  }
+  &__label{
+    display: none;
+  }
+}

@@ -1,0 +1,32 @@
+/*
+---
+name: u-only(hide)
+category:
+  - common/unit/u-only(hide)
+tag:
+  - base
+compile: false
+---
+
+PC版（タブレット〜PCサイズ）とSP版で、表示非表示を切り替えます。
+
+```html
+<div class="u-only__pc" style="background:yellow">PCサイズのみで表示</div>
+<div class="u-only__sp" style="background:red">SPサイズのみで表示</div>
+```
+*/
+
+.u-only{
+	&__pc{
+		display: none;
+		@include min-screen($width-m + 1px){
+			display: block;
+		}
+	}
+	&__sp{
+		display: none;
+		@include max-screen($width-m){
+			display: block;
+		}
+	}
+}

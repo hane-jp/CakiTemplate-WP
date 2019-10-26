@@ -1,0 +1,47 @@
+/*
+---
+name: u-img
+category:
+  - common/unit/u-img
+tag:
+  - base
+compile: false
+---
+
+画像に対する動作を指定します。
+例：レスポンシブWEBデザイン（リキッド）に対応します。
+
+---
+
+classなし
+```html
+<img
+data-src="../../../../../lib/img/dummy/yamato.png"
+alt="dummy">
+```
+classあり※レスポンシブWEBデザイン（リキッド）
+```html
+<img
+data-src="../../../../../lib/img/dummy/yamato.png"
+alt="dummy"
+class="u-img__max">
+```
+
+class/max-widthあり※レスポンシブWEBデザイン（リキッド）
+```html
+<img
+data-src="../../../../../lib/img/dummy/yamato.png"
+alt="dummy"
+style="max-width:500px;"
+class="u-img__max">
+```
+*/
+
+
+.u-img{
+	&__max{
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+	}
+}

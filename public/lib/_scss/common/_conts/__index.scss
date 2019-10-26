@@ -1,0 +1,12 @@
+.conts{
+  &__item{
+    margin-top: $bm-outer;
+    margin-bottom: $bm-outer;
+    &:first-child{
+      margin-top: 0;
+    }
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+}

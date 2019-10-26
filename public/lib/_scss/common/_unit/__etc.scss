@@ -1,0 +1,54 @@
+/*
+---
+name: etc
+category:
+  - common/unit/etc
+tag:
+  - base
+compile: false
+---
+
+マージン関連のサポート
+
+```html
+<div class="mb1" style="background:black;">test</div>
+<div class="mb2" style="background:black;">test</div>
+<div class="mb3" style="background:black;">test</div>
+<div class="mb4" style="background:black;">test</div>
+<div class="mt1" style="background:black;">test</div>
+<div class="mt2" style="background:black;">test</div>
+<div class="mt3" style="background:black;">test</div>
+<div class="mt4" style="background:black;">test</div>
+```
+*/
+
+.mb{
+  margin-bottom: $bm-inner;
+  @include max-screen($width-s){
+    margin-bottom: $bm;
+  }
+}
+
+@for $num from 0 through 10 {
+	.mb#{$num} {
+		margin-bottom: #{$num*$bm};
+	}
+}
+
+@for $num from 0 through 10 {
+	.mt#{$num} {
+		margin-top: #{$num*$bm};
+	}
+}
+
+@for $num from 0 through 10 {
+	.pb#{$num} {
+		padding-bottom: #{$num*$bm};
+	}
+}
+
+@for $num from 0 through 10 {
+	.pt#{$num} {
+		padding-top: #{$num*$bm};
+	}
+}

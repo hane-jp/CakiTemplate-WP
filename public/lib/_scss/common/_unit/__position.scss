@@ -1,0 +1,78 @@
+/*
+---
+name: u-position
+category:
+- common/unit/u-position
+tag:
+- base
+compile: false
+---
+
+block要素やblock内の要素の位置を調整します。
+ちょっと使いにくいかな。
+
+---
+
+##### 内包するインライン要素の位置を調整
+
+```html
+<div class="u-position_center" style="background:yellow;">
+center
+</div>
+```
+```html
+<div class="u-position_left" style="background:yellow;">
+center
+</div>
+```
+```html
+<div class="u-position_right" style="background:yellow;">
+center
+</div>
+```
+
+----
+
+##### block要素自身の位置を調整
+
+```html
+<div class="u-position__item_center" style="background:yellow; width:100px;">
+center
+</div>
+```
+
+```html
+<div class="u-position__item_left" style="background:yellow; width:100px;">
+center
+</div>
+```
+
+```html
+<div class="u-position__item_right" style="background:yellow; width:100px;">
+center
+</div>
+```
+*/
+.u-position{
+  &_center{
+    text-align: center;
+  }
+  &_left{
+    text-align: left;
+  }
+  &_right{
+    text-align: right;
+  }
+  &__item{
+    &_center{
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &_left{
+      margin-right: auto;
+    }
+    &_right{
+      margin-left: auto;
+    }
+  }
+}

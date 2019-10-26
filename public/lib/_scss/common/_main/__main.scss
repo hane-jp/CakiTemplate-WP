@@ -1,0 +1,31 @@
+.main{
+  padding-top: $header-height;
+  margin-bottom: $bm-outer;
+  &__row{
+    @include wrap;
+  }
+  //↓page-head
+  &__head{
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  //↓content
+  &__conts{
+    margin-top: $bm-inner;
+  }
+  //↓side
+  &__side{
+    margin-top: $bm-inner;
+  }
+  //↓page-foot
+  &__foot{
+    box-sizing: border-box;
+    border-top: 1px solid $color-light;
+    padding-top: $bm;
+    margin-top: $bm-inner;
+  }
+  //↓content tag
+  p{
+    margin: .5em 0;
+  }
+}

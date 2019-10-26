@@ -1,0 +1,14 @@
+@import '../../mixin/__mixins.scss';
+
+.swiper-container {
+	max-width: 800px;
+	width: 100%;
+	height: 300px;
+}
+.swiper-slide {
+	text-align: center;
+	background: #eee;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
