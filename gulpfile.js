@@ -30,7 +30,7 @@ var sassImage = require('gulp-sass-image');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require("gulp-sourcemaps");
 var cssmin = require('gulp-cssmin');
-var aigis = require("gulp-aigis");
+// var aigis = require("gulp-aigis");
 
 //html php
 var htmlbeautify = require('gulp-html-beautify');
@@ -49,7 +49,7 @@ var uglify = require('gulp-uglify-es').default;
 
 //--------------------- セッティング ---------------------//
 
-var hostName = "192.168.99.99"; //browserSyncするローカルIPを記載
+var hostName = "http://cakitemplatewp.local/"; //browserSyncするローカルIPを記載
 
 var basePath = ".";
 var devPath = basePath + "/public";
@@ -60,12 +60,11 @@ var paths = {
   "dir": devPath,
   "dir_dest": destPath,
   "img": devPath + "/lib/img",
-  "css": devPath + "/lib/css",
+  // "css": devPath + "/lib/css",
+  "css": devPath + "",
   "js": devPath + "/lib/js",
   "scss": devPath + "/lib/_scss",
   "es2015": devPath + "/lib/_es2015",
-  "styleguide": devPath + "/_styleguide",
-  "no_styleguide": '!' + devPath + '/_styleguide/**',
   "no_sample": '!' + devPath + '/_sample/**',
   "no_layout": '!' + devPath + '/_layout/**',
   "no_modernizr": '!**/modernizr.js',
@@ -97,7 +96,7 @@ var plumberErrorHandler = {
 gulp.task('html-dest', function () {
   gulp.src([
     paths.dir + '/**/*.{html,php}',
-    paths.no_styleguide,
+    // paths.no_styleguide,
     paths.no_sample,
     paths.no_layout
   ])
@@ -124,12 +123,12 @@ gulp.task('scss-img', function () {
 });
 
 //styleguide書き出し
-gulp.task("doc", function() {
-  del(paths.styleguide).then(function(){
-    return gulp.src("./styleguide-config/aigis_config.yml")
-    .pipe(aigis());
-  });
-});
+// gulp.task("doc", function() {
+//   del(paths.styleguide).then(function(){
+//     return gulp.src("./styleguide-config/aigis_config.yml")
+//     .pipe(aigis());
+//   });
+// });
 
 //scssをcssへ変換
 gulp.task('css', function () {
@@ -146,7 +145,7 @@ gulp.task('css-dest', function () {
   return gulp.src([
     paths.dir + '/**/*.css',
     '!' + paths.scss + '/**',
-    paths.no_styleguide
+    // paths.no_styleguide
   ])
   .pipe(cssmin())
   .pipe(gulp.dest(paths.dir_dest));
@@ -287,11 +286,11 @@ gulp.task('watch', function () {
 
   watch([
     paths.dir + '/**/*.{html,php}',
-    paths.no_styleguide
+    // paths.no_styleguide
   ]).on("change", browserSync.reload);
 
   watch(paths.scss + '/**/*.scss',function(event){
-    gulp.start(['css' ,'doc']);
+    gulp.start(['css']);
   });
 
   watch([
@@ -300,7 +299,7 @@ gulp.task('watch', function () {
 
   watch([
     paths.img + '/**/*.{png,jpg,gif,svg}',
-    paths.no_styleguide
+    // paths.no_styleguide
   ],function(event){
     gulp.start(['scss-img']);
   });
