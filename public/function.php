@@ -1,7 +1,8 @@
 <?php
 
 #1) [ $base_url ]を、ディレクトリ構成に合わせて修正してください
-$base_url = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__));
+// $base_url = str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__));
+$base_url = get_template_directory_uri();
 
 #2) 開発環境に合わせて、エラーハンドリングしてください
 ini_set('display_errors', 1);
