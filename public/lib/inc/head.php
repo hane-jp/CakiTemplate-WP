@@ -15,7 +15,7 @@
 
   <!-- js/css/icon -->
   <script src="<?php echo $base_url; ?>/lib/js/modernizr.js"></script>
-  <link rel="stylesheet" href="<?php echo $base_url; ?>/lib/css/styles.css">
+  <link rel="stylesheet" href="<?php echo $base_url; ?>/style.css">
   <link rel="apple-touch-icon" href="<?php echo $base_url; ?>/lib/img/icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="<?php echo $base_url; ?>/lib/img/icons/favicon-16.png" sizes="16x16">
   <link rel="icon" type="image/png" href="<?php echo $base_url; ?>/lib/img/icons/favicon-32.png" sizes="32x32">
@@ -39,8 +39,10 @@
   <meta name="twitter:image" content="<?php echo $img_url; ?>/thum/home@2x.png" >
   <!-- meta name="twitter:site" content="@Twitter" -->
 
+
+  <?php wp_head(); ?>
 </head>
-<body class="<?php echo $body_class." ".$mydir." ".$filename; ?>">
+<body class="<?php echo ($body_class." ".$mydir." ".$filename); body_class(); ?>">
   <?php include ($inc_path."/lib/inc/body_gtm.txt"); ?>
   <?php include ($inc_path."/lib/inc/ie10.php"); ?>
   <div id="all">
