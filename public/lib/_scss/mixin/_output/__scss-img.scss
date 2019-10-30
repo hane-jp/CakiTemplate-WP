@@ -123,7 +123,7 @@
   @return if($minus, $result * -1, $result);
 }
 
-$compass-imagehelper-path-prefix: 'lib/img/';
+$compass-imagehelper-path-prefix: '../img/';
 
 $compass-imagehelper-imagesmap: (
   'dummy/bronze.png': (
