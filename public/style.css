@@ -1,4 +1,12 @@
 @charset "UTF-8";
+/* CSS Document */
+/*
+Theme Name: CakiTemplate-WP
+Description: CakiTemplate for WordPress
+Author: Youhei Kakizaki
+Template:
+Version: 0.1
+*/
 /* 
 html5doctor.com Reset Stylesheet v1.6.1
 Last Updated: 2010-09-17
@@ -289,11 +297,11 @@ html, body {
       width: 122px;
       height: 0;
       padding-top: 42px;
-      background-image: url("../img/common/header/logo.png");
+      background-image: url("lib/img/common/header/logo.png");
       background-size: 122px 42px; }
       @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
         .header__logo a {
-          background-image: url("../img/common/header/logo@2x.png"); } }
+          background-image: url("lib/img/common/header/logo@2x.png"); } }
     .header__logo img {
       max-width: 100%;
       width: 100%;
@@ -2102,4 +2110,4 @@ body._etc .main-v__desc {
   align-items: center;
   justify-content: center; }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=style.css.map */
