@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" >
 
   <!-- title/description -->
-  <!-- <title><?php echo $metaTtl; ?></title> -->
+  <title><?php echo $metaTtl; ?></title>
   <meta name="description" content="<?php echo $metaDesc; ?>">
 
   <!-- js/css/icon -->
@@ -38,9 +38,11 @@
   <meta name="twitter:description" content="<?php echo $metaDesc; ?>" >
   <meta name="twitter:image" content="<?php echo $img_url; ?>/thum/home@2x.png" >
   <!-- meta name="twitter:site" content="@Twitter" -->
+
+
   <?php wp_head(); ?>
 </head>
-<body <?php body_class($class); ?>>
+<body class="<?php echo ($body_class." ".$mydir." ".$filename); body_class(); ?>">
   <?php include ($inc_path."/lib/inc/body_gtm.txt"); ?>
   <?php include ($inc_path."/lib/inc/ie10.php"); ?>
   <div id="all">
