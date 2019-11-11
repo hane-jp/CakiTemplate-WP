@@ -1,6 +1,6 @@
 <div class="pan">
   <ul class="pan__row" itemscope itemtype="http://data-vocabulary.org/Breadcrumab">
-    <li class="pan__item_home"><a href="<?php echo $base_url; ?>/" itemprop="url"><span itemprop="title"><?php echo $siteName; ?> ホーム</span></a></li>
+    <li class="pan__item_home"><a href="<?php echo $home_url; ?>/" itemprop="url"><span itemprop="title"><?php echo $siteName; ?> ホーム</span></a></li>
     <?php
 
     //パンくずに階層がある場合は、設置箇所に以下を記述する

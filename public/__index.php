@@ -4,7 +4,7 @@ include ("function.php");
 $metaTtl = $siteName;
 $metaDesc = $siteDescription;
 $body_class ="home";
-include ($inc_path."/lib/inc/head-home.php");
+include ($inc_path."/lib/inc/head.php");
 include ($inc_path."/lib/inc/header.php");
 ?>
 
