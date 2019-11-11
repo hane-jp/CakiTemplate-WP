@@ -8,7 +8,7 @@
     //$panAry[] = array("/test/url/index2.php","パンくず名2");
     if(!empty($panAry)){
       foreach ($panAry as $key => $value){
-        echo '<li class="pan__item"><a href="'.$base_url.$panAry[$key][0].'" itemprop="url"><span itemprop="title">'.$panAry[$key][1].'</span></a></li>';
+        echo '<li class="pan__item"><a href="'.$home_url.$panAry[$key][0].'" itemprop="url"><span itemprop="title">'.$panAry[$key][1].'</span></a></li>';
         echo (PHP_EOL);
       }
     };
