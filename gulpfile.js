@@ -49,7 +49,7 @@ var uglify = require('gulp-uglify-es').default;
 
 //--------------------- セッティング ---------------------//
 
-var hostName = " http://192.168.56.1"; //browserSyncするローカルIPを記載
+var hostName = "http://cakitemplatewp.local/"; //browserSyncするローカルIPを記載
 
 var basePath = ".";
 var devPath = basePath + "/public";
