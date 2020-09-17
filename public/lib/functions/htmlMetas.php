@@ -2,7 +2,7 @@
 
 #メタデーター管理
 
-$siteName = "CakiTemplate";
+$siteName = get_bloginfo( 'name' );
 $siteDescription = $siteName."の".$pageTtl."ページです。サイトディスクリプション";
 
 global $pageTtl;
