@@ -1,314 +1,392 @@
-//CakiTemplate custom
+/**
+ * BRC gulp tasks
+ *
+ * $ npm run dev = ファイルの更新を検知して、自動で更新(vagrantなし)
+ * $ npm run gulp = ファイルの更新を検知して、自動で更新(vagrantあり)
+ * $ npm run gulp dest = 納品用に整形してdestフォルダーへ出力
+ * $ npm run gulp scssImg = 画像のサイズを取得してmixinへ出力
+ */
 
-/*
+/**
+ * gulp package import
+ */
+// BASE
+const gulp = require('gulp')
+const path = require('path')
+const minimist = require('minimist')
+// ERROR
+const plumber = require('gulp-plumber')
+const notify = require('gulp-notify')
+// HTML/PHP none
+// IMG
+const sassImage = require('gulp-sass-image')
+// CSS
+const gulpSass = require('gulp-sass')
+const gulpAutoprefixer = require('gulp-autoprefixer')
+const sourcemaps = require('gulp-sourcemaps')
+const cssmin = require('gulp-cssmin')
+// JS
+const webpackStream = require('webpack-stream')
+const webpack = require('webpack')
+const gulpModernizr = require('gulp-modernizr')
+const uglify = require('gulp-uglify')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+// SYNC/WATCH
+const browserSync = require('browser-sync')
+const gulpConnect = require('gulp-connect-php')
+// ENV
+const dotenv = require('dotenv').config()
+console.log('dotenv: ', dotenv)
 
-$ npm run gulp = scssやjavascriptファイルの更新を検知して、自動で更新
-$ npm run gulp dest = 納品用に整形してdestフォルダーへ書き出し
-$ npm run gulp css = scssをcssへ書き出し
-$ npm run gulp js = es2015をjsへ書き出し
-$ npm run gulp scss-img = 画像のサイズを取得してmixinへ書き出し
-$ npm run gulp img-min = 書き出した画像ファイルを圧縮
+/**
+ * env settings
+ * sync用ポート番号など各種パラメーターを設定
+ * dotenvを利用して変更可能
+ */
+class EnvSettings {
+	constructor () {
+		// proxyのport設定
+		this.port = process.env.PORT || 8080
+		// proxyのhost設定
+		this.host = process.env.HOST || 'localhost'
+		// windowsまたはphpのバージョンを指定したい場合はpathを指定
+		this.phpPath = process.env.PHP_PATH || 'php'
+		// vagrant用のhostName(Vagrantfileの設定と合わせてください)
+		this.hostName = process.env.HOST_NAME || '192.168.33.64'
+		// modeを指定
+		this.mode = process.env.MODE || 'development'
+		// gulp task名
+		this.taskName = ''
+	}
 
-*/
+	// gulpの実行タスク名を取得
+	taskNameChange () {
+		const argv = minimist(process.argv.slice(2))
+		this.taskName = argv._[0]
+	}
 
-//--------------------- プラグイン読み込み ---------------------//
+	// dest時は、modeをproductionへ変更
+	modeChange () {
+		if (!process.env.MODE) {
+			if (this.taskName === 'dest') this.mode = 'production'
+		}
+	}
+}
+const envSettings = new EnvSettings()
+envSettings.taskNameChange()
+envSettings.modeChange()
+console.log('envSettings: ', envSettings)
 
-var gulp = require('gulp');
-var path = require('path');
-var del = require('del');
+/**
+ * paths settings
+ * 開発に必要な各種パスを指定
+ * dotenvを利用して変更可能
+ */
+class PathSettings {
+	constructor () {
+		this.dir = process.env.PATH_DIR || 'public/'
+		this.img = process.env.PATH_IMG || `${this.dir}lib/img`
+		this.css = process.env.PATH_CSS || `${this.dir}lib/css`
+		this.scss = process.env.PATH_SCSS || `${this.dir}lib/_scss`
+		this.js = process.env.PATH_JS || `${this.dir}lib/js`
+		this.es2015 = process.env.PATH_ES2015 || `${this.dir}lib/_es2015`
+		this.no = ('!**/_*', '!**/_**')
+	}
+}
+const pathSettings = new PathSettings()
+console.log('pathSettings: ', pathSettings)
 
-//base
-var browserSync = require('browser-sync');
-var plumber = require('gulp-plumber');
-var notify = require('gulp-notify');
-var rename = require('gulp-rename');
-var watch = require('gulp-watch');
+/**
+ * destPaths settings
+ * 書き出しに必要な各種パスを指定
+ * dotenvを利用して変更可能
+ */
+class DestSettings {
+	constructor () {
+		this.dir = process.env.DEST_DIR || 'dest/'
+		this.img = process.env.DEST_IMG || `${this.dir}lib/img`
+		this.css = process.env.DEST_CSS || `${this.dir}lib/css`
+		this.js = process.env.DEST_JS || `${this.dir}lib/js`
+	}
+}
+const destSettings = new DestSettings()
+console.log('destSettings: ', destSettings)
 
-//css/scss
-var sass = require('gulp-sass');
-var sassImage = require('gulp-sass-image');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require("gulp-sourcemaps");
-var cssmin = require('gulp-cssmin');
-// var aigis = require("gulp-aigis");
-
-//html php
-var htmlbeautify = require('gulp-html-beautify');
-
-//images
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
-var mozjpeg = require('imagemin-mozjpeg');
-
-//js/es2015/modernizr
-var webpacks = require('webpack-stream');
-var webpack = require('webpack');
-var webpackConfig = require("./webpack.config");
-var modernizr = require('gulp-modernizr');
-var uglify = require('gulp-uglify-es').default;
-
-//--------------------- セッティング ---------------------//
-
-var hostName = "http://cakitemplatewp.local/"; //browserSyncするローカルIPを記載
-
-var basePath = ".";
-var devPath = basePath + "/public";
-var destPath = basePath + "/dest"
-
-//各種パス関連
-var paths = {
-  "dir": devPath,
-  "dir_dest": destPath,
-  "img": devPath + "/lib/img",
-  // "css": devPath + "/lib/css",
-  "css": devPath + "",
-  "js": devPath + "/lib/js",
-  "scss": devPath + "/lib/_scss",
-  "es2015": devPath + "/lib/_es2015",
-  "no_sample": '!' + devPath + '/_sample/**',
-  "no_layout": '!' + devPath + '/_layout/**',
-  "no_modernizr": '!**/modernizr.js',
-  "no": ("!**/_*", "!**/_**","")
+/**
+ * ERROR
+ * エラーによるパイプの破損を防止
+ */
+const plumberErrorHandler = {
+	errorHandler: notify.onError({
+		message: 'Error: <%= error.message %>'
+	})
 }
 
-// browser-sync
-gulp.task('browser-sync', function () {
-  browserSync.init({
-    proxy: hostName,
-    port: 4000 //空いているprotを選択
-  });
-});
+/**
+ * IMAGE
+ * 画像サイズを取得しscssにmixinを出力
+ */
+function scssImg () {
+	return gulp.src([
+		pathSettings.img + '/**/*.{png,jpg,gif,svg}',
+		'!' + pathSettings.img + '/thum/**/*.{png,jpg,gif,svg}',
+		'!' + pathSettings.img + '/**/*@2x.{png,jpg,gif,svg}',
+		pathSettings.no])
+		.pipe(sassImage({
+			targetFile: '__scss-img.scss',
+			images_path: pathSettings.img,
+			css_path: pathSettings.css,
+			includeData: false,
+			createPlaceholder: false
+		}))
+		.pipe(gulp.dest(pathSettings.scss + '/mixin/_output/'))
+}
 
-gulp.task('bs-reload', function () {
-  browserSync.reload();
-});
+// export tasks
+exports.scssImg = scssImg
 
-//エラー表記
-var plumberErrorHandler = {
-  errorHandler: notify.onError({
-    message: "Error: <%= error.message %>"
-  })
-};
+/**
+ * CSS
+ * SCSSをCSSへ変換
+ */
 
-//---------------html
+function css () {
+	return gulp.src([pathSettings.scss + '/**/*.scss', pathSettings.no])
+		.pipe(plumber(plumberErrorHandler))
+		.pipe(sourcemaps.init())
+		.pipe(gulpSass.sync().on('error', gulpSass.logError))
+		.pipe(gulpAutoprefixer({
+			cascade: false,
+		}))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(pathSettings.css))
+}
 
-//納品用に整形して書き出し
-gulp.task('html-dest', function () {
-  gulp.src([
-    paths.dir + '/**/*.{html,php}',
-    // paths.no_styleguide,
-    paths.no_sample,
-    paths.no_layout
-  ])
-  .pipe(htmlbeautify({
-    indent_char: ' ',
-    indent_size: 2
-  }))
-  .pipe(gulp.dest(paths.dir_dest))
-});
+// export tasks
+exports.css = gulp.series(
+	css,
+	modernizrTask
+)
 
-//---------------scss・css
+/**
+ * JS
+ * webpackでES2016〜をES2015へ変換
+ * modernizrを自動出力
+ */
 
-//画像サイズを取得しscssに書き出し
-gulp.task('scss-img', function () {
-  return gulp.src(paths.img + '/**/*.{png,jpg,gif,svg}')
-  .pipe(sassImage({
-    targetFile: '__scss-img.scss',
-    images_path: paths.img,
-    css_path: paths.css,
-    includeData: false,
-    createPlaceholder: false
-  }))
-  .pipe(gulp.dest(paths.scss + '/mixin/_output'));
-});
+// webpack setting
+function webpackTask () {
+	// JS出力先
+	let webpackDestDir = pathSettings.js
+	if (envSettings.taskName === 'dest') { webpackDestDir = destSettings.js }
+	// return
+	return plumber(plumberErrorHandler)
+		.pipe(webpackStream({
+			mode: envSettings.mode,
+			entry: {
+				scripts: './' + pathSettings.es2015 + '/scripts.js'
+			},
+			output: {
+				filename: '[name].js',
+			},
+			module: {
+				rules: [
+					{
+						test: /\.(css|scss)$/,
+						use: [
+							'vue-style-loader',
+							'css-loader',
+							{
+								// for .vue:autoprefixer
+								loader: 'postcss-loader',
+								options: {
+									plugins: [
+										require('autoprefixer')({
+											grid: 'autoplace'
+										})
+									]
+								}
+							},
+							'sass-loader',
+							{
+								// for .vue:グローバルscssファイル読み込み
+								loader: 'sass-resources-loader',
+								options: {
+									resources: [
+										path.resolve(__dirname, 'public/lib/_es2015/mixin/__mixins.scss'),
+									]
+								}
+							}
+						]
+					},
+					{
+						test: /\.vue$/,
+						loader: 'vue-loader'
+					},
+					{
+						test: /\.js$/,
+						exclude: /node_modules/,
+						use: ['babel-loader'],
+					},
+					{
+						/**
+						 * expose-loaderを利用して、jqueryをグローバル化
+						 * See https://github.com/webpack-contrib/expose-loader#using-configuration
+						 */
+						test: require.resolve('jquery'),
+						loader: 'expose-loader',
+						options: {
+							exposes: ['$', 'jQuery'],
+						},
+					},
+				]
+			},
+			resolve: {
+				alias: {
+					/**
+					 * Vueファイルを完全ビルドしたい場合は、バンドラでエイリアスを設定する必要があり
+					 * See https://jp.vuejs.org/v2/guide/installation.html#ランタイム-コンパイラとランタイム限定の違い
+					 */
+					vue$: 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' webpack 1 用
+				}
+			},
+			plugins: [
+				// make sure to include the plugin!
+				new VueLoaderPlugin()
+			],
+		}, webpack))
+		.pipe(gulp.dest(webpackDestDir))
+}
 
-//styleguide書き出し
-// gulp.task("doc", function() {
-//   del(paths.styleguide).then(function(){
-//     return gulp.src("./styleguide-config/aigis_config.yml")
-//     .pipe(aigis());
-//   });
-// });
+// modernizr
+function modernizrTask () {
+	return gulp.src([pathSettings.js + '/**/*.js', pathSettings.css + '/**/*.css', '!**/modernizr.js'])
+		.pipe(gulpModernizr({
+			options: [
+				'setClasses',
+				'addTest',
+				'html5printshiv',
+				'testProp',
+				'fnBind',
+			]
+		}))
+		.pipe(gulp.dest(pathSettings.js))
+}
 
-//scssをcssへ変換
-gulp.task('css', function () {
-  return gulp.src(paths.scss + '/**/*.scss')
-  .pipe(plumber(plumberErrorHandler))
-  .pipe(sourcemaps.init())
-  .pipe(sass.sync().on('error', sass.logError))
-  .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest(paths.css));
-});
+// export tasks
+exports.webpack = webpackTask
+exports.modernizr = modernizrTask
+exports.js = gulp.series(
+	webpackTask,
+	modernizrTask
+)
 
-//cssを圧縮して納品用に書き出し
-gulp.task('css-dest', function () {
-  return gulp.src([
-    paths.dir + '/**/*.css',
-    '!' + paths.scss + '/**',
-    // paths.no_styleguide
-  ])
-  .pipe(cssmin())
-  .pipe(gulp.dest(paths.dir_dest));
-});
+/**
+ * SYNC
+ * phpサーバーを立ち上げブラウザを同期
+ */
+function sync (done) {
+	gulpConnect.server({
+		port: envSettings.port,
+		base: pathSettings.dir,
+		stdio: 'ignore',
+		bin: envSettings.phpPath
+	}, () => {
+		browserSync.init({
+			proxy: `${envSettings.host}:${envSettings.port}`
+		})
+	})
+	done()
+}
+function disconnect (done) {
+	console.log('port disConnected')
+	gulpConnect.closeServer()
+	done()
+}
+// browser-sync （vagrant あり）
+function syncWithVagrant (done) {
+	browserSync.init({
+		proxy: envSettings.hostName,
+		port: envSettings.port
+	})
+	done()
+}
+// browser-syncブラウザリロード
+function reload (done) {
+	browserSync.reload()
+	done()
+}
 
-//---------------image
+/**
+ * WATCH
+ * vagrantあり/なし
+ */
 
-//納品用画像を書き出し
-gulp.task('img-dest', function () {
-  return gulp.src([
-    paths.dir + '/**/*.{png,jpg,gif,svg,pdf,ico}',
-    // paths.no_styleguide
-  ])
-  .pipe(gulp.dest(paths.dir_dest));
-});
+function watch () {
+	gulp.watch(pathSettings.dir + '**/*.{html,php}', reload)
+	gulp.watch(pathSettings.css + '/**/*.css', reload)
+	gulp.watch(pathSettings.js + '/**/*.js', reload)
+	gulp.watch(pathSettings.img + '/**/*.{png,jpg,gif,svg,ico}', scssImg)
+	gulp.watch(pathSettings.scss + '/**/*.scss', gulp.series(css, modernizrTask))
+	gulp.watch([pathSettings.es2015 + '/**/*.{js,scss,vue}', '!**/modernizr.js'], gulp.series(webpackTask, modernizrTask))
+}
 
-//書き出した画像の圧縮
-gulp.task('img-min', function () {
-  return gulp.src(paths.dir_dest + '/**/*.{png,jpg}')
-  .pipe(imagemin(
-    [
-      pngquant({
-        quality: '100',
-        speed: 1,
-        floyd:0
-      }),
-      mozjpeg({
-        quality:85,
-        progressive: true
-      })
-    ]
-  ))
-  .pipe(gulp.dest(paths.dir_dest));
-});
+// export tasks
+// vagrant なし
+exports.dev = gulp.series(
+	sync,
+	disconnect,
+	watch
+)
+// vagrant あり
+exports.default = gulp.series(
+	syncWithVagrant,
+	watch
+)
 
-//---------------js
+/**
+ * DEST
+ * 各種ファイルの本番用出力設定
+ */
 
-//webpack設定
-gulp.task('webpack', function () {
-  return plumber(plumberErrorHandler)
-  .pipe (webpacks( { webpackConfig,
-    entry: {
-      scripts: paths.es2015 + '/scripts.js'
-    },
-    output: {
-      filename: '[name].js',
-    },
-    devtool: 'inline-source-map',
-    module: {
-      rules: [
-        {
-          test: /\.(css|scss)$/,
-          use: [
-            'style-loader',
-            'css-loader',
-            "sass-loader",
-          ]
-        },
-        {
-          test: /\.(jpg|gif|png)$/,
-          use:[
-            {loader: 'url-loader?limit=25000'}
-          ]
-        }
-      ]
-    },
-    resolve: {
-      alias: {
-        Vue: __dirname + '/node_modules/vue/dist/vue.min.js'
-      }
-    },
-    plugins: [
-      new webpack.optimize.AggressiveMergingPlugin(),　//ファイルを細かく分析し、まとめられるところはできるだけまとめてコードを圧縮する
-      new webpack.ProvidePlugin({　//jqueryはグローバルに出す設定。これでrequireせず使えるのでjqueryプラグインもそのまま動く。
-        jQuery: "jquery",
-        $: "jquery",
-        jquery: "jquery",
-        //IScroll: "fullpage.js/vendors/scrolloverflow.min"
-      })
-    ],
-    performance: { hints: false }
-  }))
-  .pipe(gulp.dest(paths.js));
-});
+// HTML/PHP出力
+function htmlDest (done) {
+	return gulp.src([pathSettings.dir + '/**/*.{html,php}'])
+		.pipe(gulp.dest(destSettings.dir))
+}
 
-//modernizr
-gulp.task('modernizr', ['webpack'], function () {
-  gulp.src([
-    paths.js + '/**/*.js',
-    paths.css + '/**/*.css',
-    paths.no_modernizr
-  ])
-  .pipe(modernizr({
-    options: [
-      'setClasses',
-      'addTest',
-      'html5printshiv',
-      'testProp',
-      'fnBind',
-    ]
-  }))
-  .pipe(gulp.dest(paths.js));
-});
+// IMAGE出力
+function imgDest () {
+	return gulp.src([pathSettings.img + '/**/*.{png,jpg,gif,svg,pdf,ico}'])
+		.pipe(gulp.dest(destSettings.img))
+}
 
-//js処理簡略用
-gulp.task('js', ['modernizr']);
+// CSS出力（データー圧縮付き）
+function cssDest () {
+	return gulp.src([pathSettings.css + '/**/*.css', pathSettings.no])
+		.pipe(cssmin())
+		.pipe(gulp.dest(destSettings.css))
+}
 
-//jsファイルを圧縮して納品用に書き出し
-gulp.task('js-dest', function () {
-  return gulp.src([
-    paths.dir + '/**/*.js',
-    '!' + paths.es2015 + "/**"
-  ])
-  .pipe(uglify())
-  .pipe(gulp.dest(paths.dir_dest))
-});
+// JS出力（データー圧縮付き）
+// webpack変換のJSは、webpackから「直接」destディレクトリへ出力
+// 現状は、modernizrのみ圧縮出力対象
+function jsDest () {
+	return gulp.src(pathSettings.js + '/**/modernizr.js')
+		.pipe(uglify())
+		.pipe(gulp.dest(destSettings.js))
+}
 
-//---------------その他
+// その他出力
+function etcDest () {
+	return gulp.src([pathSettings.dir + '/**/*.{eot,svg,ttf,woff,woff2,otf,txt,json,pem}', pathSettings.dir + '/**/.htaccess'])
+		.pipe(gulp.dest(destSettings.dir))
+}
 
-//納品用書き出し
-gulp.task('etc-dest', function () {
-  return gulp.src([
-    paths.dir + '/**/*.{eot,svg,ttf,woff,woff2,otf,txt,json,pem}',
-    paths.dir + '/**/.htaccess',
-    paths.no_sample,
-    paths.no_layout
-  ])
-  .pipe(gulp.dest(paths.dir_dest))
-});
-
-//------------納品ファイル書き出し
-
-gulp.task('dest', ['img-dest', 'js-dest', 'css-dest', 'html-dest', 'etc-dest']);
-
-//gulp watchタスク
-gulp.task('default', ['browser-sync', 'watch']);
-gulp.task('watch', function () {
-
-  watch([
-    paths.dir + '/**/*.{html,php}',
-    // paths.no_styleguide
-  ]).on("change", browserSync.reload);
-
-  watch(paths.scss + '/**/*.scss',function(event){
-    gulp.start(['css']);
-  });
-
-  watch([
-    paths.css + '/**/*.css'
-  ]).on("change", browserSync.reload);
-
-  watch([
-    paths.img + '/**/*.{png,jpg,gif,svg}',
-    // paths.no_styleguide
-  ],function(event){
-    gulp.start(['scss-img']);
-  });
-
-  watch(paths.es2015 + '/**/*.{js,scss}',function(event){
-    gulp.start(['js']);
-  });
-  watch([
-    paths.js + '/**/modernizr.js',
-  ]).on("change", browserSync.reload);
-
-});
+// export tasks
+exports.htmlDest = htmlDest
+exports.imgDest = imgDest
+exports.cssDest = cssDest
+exports.jsDest = jsDest
+exports.etcDest = etcDest
+exports.dest = gulp.parallel(htmlDest, imgDest, cssDest, etcDest, gulp.series(webpackTask, jsDest))
