@@ -86,7 +86,7 @@ class PathSettings {
 	constructor () {
 		this.dir = process.env.PATH_DIR || 'public/'
 		this.img = process.env.PATH_IMG || `${this.dir}lib/img`
-		this.css = process.env.PATH_CSS || `${this.dir}lib/css`
+		this.css = process.env.PATH_CSS || `${this.dir}`
 		this.scss = process.env.PATH_SCSS || `${this.dir}lib/_scss`
 		this.js = process.env.PATH_JS || `${this.dir}lib/js`
 		this.es2015 = process.env.PATH_ES2015 || `${this.dir}lib/_es2015`
@@ -105,7 +105,7 @@ class DestSettings {
 	constructor () {
 		this.dir = process.env.DEST_DIR || 'dest/'
 		this.img = process.env.DEST_IMG || `${this.dir}lib/img`
-		this.css = process.env.DEST_CSS || `${this.dir}lib/css`
+		this.css = process.env.DEST_CSS || `${this.dir}`
 		this.js = process.env.DEST_JS || `${this.dir}lib/js`
 	}
 }
