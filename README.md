@@ -1,6 +1,9 @@
 ### AmiTemplateのカスタマイズ版
 [本家AmiTemplate](https://github.com/amishiro/AmiTemplate-PHP)のv2.0.20をベースに
-自分用にカスタマイズしています。
+WordPressの独自テンプレート開発用にカスタマイズしています。
+
+WordPressのローカル開発環境は「LOCAL」を使用することを想定しています。
+LOCAL →　https://localwp.com/
 
 
 
@@ -29,14 +32,13 @@ $ npm run gulp
 ```
 $ node -v
 ↓
-v8.5.0
-```
-```
+v10.22.1
+
 $ npm -v
 ↓
-5.3.0
+6.14.6
 ```
-```
+
 $ gulp -v
 ↓
 CLI version 3.9.1
