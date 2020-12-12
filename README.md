@@ -2,7 +2,7 @@
 [本家AmiTemplate](https://github.com/amishiro/AmiTemplate-PHP)のv2.0.20をベースに
 WordPressの独自テンプレート開発用にカスタマイズしています。
 
-WordPressのローカル開発環境は「[OCAL](https://localwp.com/)」を使用することを想定しています。
+WordPressのローカル開発環境は「[LOCAL](https://localwp.com/)」を使用することを想定しています。
 
 
 ### QUICK START
