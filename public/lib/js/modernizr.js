@@ -1,6 +1,6 @@
 /*!
- * modernizr v3.7.1
- * Build https://modernizr.com/download?-canvas-capture-checked-contains-cors-csstransforms3d-flexbox-hidden-history-mutationobserver-opacity-performance-placeholder-pointerevents-sizes-srcset-svg-target-template-time-touchevents-unicode-webanimations-addtest-fnbind-printshiv-setclasses-testprop-dontmin
+ * modernizr v3.11.4
+ * Build https://modernizr.com/download?-capture-checked-contains-cors-csstransforms3d-flexbox-hidden-history-json-mutationobserver-opacity-performance-pointerevents-proxy-sizes-srcset-svg-target-template-texttrackapi_track-time-touchevents-unicode-webanimations-addtest-fnbind-printshiv-setclasses-testprop-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -23,7 +23,7 @@
  * of control over the experience.
 */
 
-;(function(window, document, undefined){
+;(function(scriptGlobalObject, window, document, undefined){
 
   var tests = [];
   
@@ -35,8 +35,7 @@
    * @access public
    */
   var ModernizrProto = {
-    // The current version, dummy
-    _version: '3.7.1',
+    _version: '3.11.4',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
@@ -157,8 +156,8 @@
           if (featureNameSplit.length === 1) {
             Modernizr[featureNameSplit[0]] = result;
           } else {
-            // cast to a Boolean, if not one already
-            if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+            // cast to a Boolean, if not one already or if it doesnt exist yet (like inputtypes)
+            if (!Modernizr[featureNameSplit[0]] || Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
               Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
             }
 
@@ -356,11 +355,11 @@
    * @optionProp addTest
    * @access public
    * @function addTest
-   * @param {string|Object} feature - The string name of the feature detect, or an
+   * @param {string|object} feature - The string name of the feature detect, or an
    * object of feature detect names and test
    * @param {Function|boolean} test - Function returning true if feature is supported,
    * false if not. Otherwise a boolean representing the results of a feature detection
-   * @returns {Object} the Modernizr object to allow chaining
+   * @returns {object} the Modernizr object to allow chaining
    * @example
    *
    * The most common way of creating your own feature detects is by calling
@@ -1233,7 +1232,7 @@
    *
    * @access private
    * @function nativeTestProps
-   * @param {array} props - An array of property names
+   * @param {Array} props - An array of property names
    * @param {string} value - A string representing the value we want to check via @supports
    * @returns {boolean|undefined} A boolean when @supports exists, undefined otherwise
    */
@@ -1312,12 +1311,12 @@
     var afterInit, i, propsLength, prop, before;
 
     // If we don't have a style element, that means we're running async or after
-    // the core tests, so we'll need to create our own elements to use
+    // the core tests, so we'll need to create our own elements to use.
 
-    // inside of an SVG element, in certain browsers, the `style` element is only
+    // Inside of an SVG element, in certain browsers, the `style` element is only
     // defined for valid tags. Therefore, if `modernizr` does not have one, we
     // fall back to a less used element and hope for the best.
-    // for strict XHTML browsers the hardly used samp element is used
+    // For strict XHTML browsers the hardly used samp element is used.
     var elems = ['modernizr', 'tspan', 'samp'];
     while (!mStyle.style && elems.length) {
       afterInit = true;
@@ -1423,7 +1422,7 @@
    * @access private
    * @function fnBind
    * @param {Function} fn - a function you want to change `this` reference to
-   * @param {Object} that - the `this` you want to call the function with
+   * @param {object} that - the `this` you want to call the function with
    * @returns {Function} The wrapped version of the supplied function
    */
   function fnBind(fn, that) {
@@ -1433,27 +1432,6 @@
   }
 
   ;
-/*!
-{
-  "name": "Canvas",
-  "property": "canvas",
-  "caniuse": "canvas",
-  "tags": ["canvas", "graphics"],
-  "polyfills": ["flashcanvas", "excanvas", "slcanvas", "fxcanvas"]
-}
-!*/
-/* DOC
-Detects support for the `<canvas>` element for 2D drawing.
-*/
-
-  // On the S60 and BB Storm, getContext exists, but always returns undefined
-  // so we actually have to call getContext() to verify
-  // github.com/Modernizr/Modernizr/issues/issue/97/
-  Modernizr.addTest('canvas', function() {
-    var elem = createElement('canvas');
-    return !!(elem.getContext && elem.getContext('2d'));
-  });
-
 /*!
 {
   "name": "Cross-Origin Resource Sharing",
@@ -1500,6 +1478,12 @@ Detects support for the History API for manipulating the browser session history
     // Unfortunately support is really buggy and there is no clean way to detect
     // these bugs, so we fall back to a user agent sniff :(
     var ua = navigator.userAgent;
+    
+    // Some browsers allow to have empty userAgent.
+    // Therefore, we need to check ua before using "indexOf" on it.
+    if(!ua) {
+      return false;
+    }
 
     // We only want Android 2 and 4.0, stock browser, and not Chrome which identifies
     // itself as 'Mobile Safari' as well, nor Windows Phone (issue #1471).
@@ -1519,17 +1503,38 @@ Detects support for the History API for manipulating the browser session history
     return (window.history && 'pushState' in window.history);
   });
 
+/*!
+{
+  "name": "JSON",
+  "property": "json",
+  "caniuse": "json",
+  "notes": [{
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Glossary/JSON"
+  }],
+  "polyfills": ["json2"]
+}
+!*/
+/* DOC
+Detects native support for JSON handling functions.
+*/
+
+  // this will also succeed if you've loaded the JSON2.js polyfill ahead of time
+  //   ... but that should be obvious. :)
+
+  Modernizr.addTest('json', 'JSON' in window && 'parse' in JSON && 'stringify' in JSON);
+
 
   /**
    * If the browsers follow the spec, then they would expose vendor-specific styles as:
    *   elem.style.WebkitBorderRadius
    * instead of something like the following (which is technically incorrect):
    *   elem.style.webkitBorderRadius
-
+   *
    * WebKit ghosts their properties in lowercase but Opera & Moz do not.
    * Microsoft uses a lowercase `ms` instead of the correct `Ms` in IE8+
    *   erik.eae.net/archives/2008/03/10/21.48.10/
-
+   *
    * More here: github.com/Modernizr/Modernizr/issues/issue/21
    *
    * @access private
@@ -1570,9 +1575,9 @@ Detects support for the History API for manipulating the browser session history
    * @access private
    * @function testDOMProps
    * @param {Array<string>} props - An array of properties to test for
-   * @param {Object} obj - An object or Element you want to use to test the parameters again
-   * @param {boolean|Object} elem - An Element to bind the property lookup again. Use `false` to prevent the check
-   * @returns {false|*} returns false if the prop is unsupported, otherwise the value that is supported
+   * @param {object} obj - An object or Element you want to use to test the parameters again
+   * @param {boolean|object} elem - An Element to bind the property lookup again. Use `false` to prevent the check
+   * @returns {boolean|*} returns `false` if the prop is unsupported, otherwise the value that is supported
    */
   function testDOMProps(props, obj, elem) {
     var item;
@@ -1611,11 +1616,11 @@ Detects support for the History API for manipulating the browser session history
    * @access private
    * @function testPropsAll
    * @param {string} prop - A string of the property to test for
-   * @param {string|Object} [prefixed] - An object to check the prefixed properties on. Use a string to skip
+   * @param {string|object} [prefixed] - An object to check the prefixed properties on. Use a string to skip
    * @param {HTMLElement|SVGElement} [elem] - An element used to test the property and value against
    * @param {string} [value] - A string of a css value
    * @param {boolean} [skipValueTest] - An boolean representing if you want to test if value sticks when set
-   * @returns {false|string} returns the string version of the property, or false if it is unsupported
+   * @returns {string|boolean} returns the string version of the property, or `false` if it is unsupported
    */
   function testPropsAll(prop, prefixed, elem, value, skipValueTest) {
 
@@ -1717,9 +1722,9 @@ Detects support for the History API for manipulating the browser session history
    * @access public
    * @function prefixed
    * @param {string} prop - String name of the property to test for
-   * @param {Object} [obj] - An object to test for the prefixed properties on
+   * @param {object} [obj] - An object to test for the prefixed properties on
    * @param {HTMLElement} [elem] - An element used to test specific properties against
-   * @returns {string|false} The string representing the (possibly prefixed) valid
+   * @returns {string|boolean} The string representing the (possibly prefixed) valid
    * version of the property, or `false` when it is unsupported.
    * @example
    *
@@ -1799,7 +1804,7 @@ Detects support for the History API for manipulating the browser session history
   "notes": [{
     "name": "W3C Spec",
     "href": "https://www.w3.org/TR/navigation-timing/"
-  },{
+  }, {
     "name": "HTML5 Rocks Tutorial",
     "href": "https://www.html5rocks.com/en/tutorials/webperformance/basics/"
   }],
@@ -1812,6 +1817,27 @@ Detects support for the Navigation Timing API, for measuring browser and connect
 
   Modernizr.addTest('performance', !!prefixed('performance', window));
 
+
+  /**
+   * List of JavaScript DOM values used for tests including a NON-prefix
+   *
+   * @memberOf Modernizr
+   * @name Modernizr._domPrefixesAll
+   * @optionName Modernizr._domPrefixesAll
+   * @optionProp domPrefixesAll
+   * @access public
+   * @example
+   *
+   * Modernizr._domPrefixesAll is exactly the same as [_domPrefixes](#modernizr-_domPrefixes), but also
+   * adds an empty string in the array to test for a non-prefixed value
+   *
+   * ```js
+   * Modernizr._domPrefixesAll === [ "", "Moz", "O", "ms", "Webkit" ];
+   * ```
+   */
+  var domPrefixesAll = [''].concat(domPrefixes);
+  ModernizrProto._domPrefixesAll = domPrefixesAll;
+  
 
   /**
    * Modernizr.hasEvent() detects support for a given event
@@ -1889,17 +1915,18 @@ Detects support for the Navigation Timing API, for measuring browser and connect
 {
   "name": "DOM Pointer Events API",
   "property": "pointerevents",
+  "caniuse": "pointer",
   "tags": ["input"],
   "authors": ["Stu Cox"],
   "notes": [{
-      "name": "W3C Spec (Pointer Events)",
-      "href": "https://www.w3.org/TR/pointerevents/"
-    },{
-      "name": "W3C Spec (Pointer Events Level 2)",
-      "href": "https://www.w3.org/TR/pointerevents2/"
-    },{
-      "name": "MDN Docs",
-      "href": "https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent"
+    "name": "W3C Spec (Pointer Events)",
+    "href": "https://www.w3.org/TR/pointerevents/"
+  }, {
+    "name": "W3C Spec (Pointer Events Level 2)",
+    "href": "https://www.w3.org/TR/pointerevents2/"
+  }, {
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent"
   }],
   "warnings": ["This property name now refers to W3C DOM PointerEvents: https://github.com/Modernizr/Modernizr/issues/548#issuecomment-12812099"],
   "polyfills": ["pep"]
@@ -1913,44 +1940,34 @@ Detects support for the DOM Pointer Events API, which provides a unified event i
   // Now refers to W3C DOM PointerEvents spec rather than the CSS pointer-events property.
   Modernizr.addTest('pointerevents', function() {
     // Cannot use `.prefixed()` for events, so test each prefix
-    var bool = false,
-      i = domPrefixes.length;
-
-    // Don't forget un-prefixed...
-    bool = Modernizr.hasEvent('pointerdown');
-
-    while (i-- && !bool) {
-      if (hasEvent(domPrefixes[i] + 'pointerdown')) {
-        bool = true;
+    for (var i = 0, len = domPrefixesAll.length; i < len; i++) {
+      if (hasEvent(domPrefixesAll[i] + 'pointerdown')) {
+        return true;
       }
     }
-    return bool;
+    return false;
   });
 
 /*!
 {
-  "name": "SVG",
-  "property": "svg",
-  "caniuse": "svg",
-  "tags": ["svg"],
-  "authors": ["Erik Dahlstrom"],
+  "name": "Proxy Object",
+  "property": "proxy",
+  "caniuse": "proxy",
+  "authors": ["Brock Beaudry"],
+  "notes": [{
+    "name": "MDN Docs",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy"
+  }],
   "polyfills": [
-    "svgweb",
-    "raphael",
-    "amplesdk",
-    "canvg",
-    "svg-boilerplate",
-    "sie",
-    "dojogfx",
-    "fabricjs"
+    "harmony-reflect"
   ]
 }
 !*/
 /* DOC
-Detects support for SVG in `<embed>` or `<object>` elements.
+Detects support for the Proxy object which is used to create dynamic proxies.
 */
 
-  Modernizr.addTest('svg', !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+  Modernizr.addTest('proxy', 'Proxy' in window);
 
 
   /**
@@ -2051,9 +2068,7 @@ Detects support for SVG in `<embed>` or `<object>` elements.
       var bool = false;
 
       injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function(node) {
-        bool = (window.getComputedStyle ?
-          window.getComputedStyle(node, null) :
-          node.currentStyle).position === 'absolute';
+        bool = computedStyle(node, null, 'position') === 'absolute';
       });
 
       return bool;
@@ -2074,6 +2089,7 @@ Detects support for SVG in `<embed>` or `<object>` elements.
     "href": "https://www.w3.org/TR/2013/WD-touch-events-20130124/"
   }],
   "warnings": [
+    "** DEPRECATED see https://github.com/Modernizr/Modernizr/pull/2432 **",
     "Indicates if the browser supports the Touch Events spec, and does not necessarily reflect a touchscreen device"
   ],
   "knownBugs": [
@@ -2123,7 +2139,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
    * @access public
    * @function testStyles
    * @param {string} rule - String representing a css rule
-   * @param {function} callback - A function that is used to test the injected element
+   * @param {Function} callback - A function that is used to test the injected element
    * @param {number} [nodes] - An integer representing the number of additional nodes you want injected
    * @param {string[]} [testnames] - An array of strings that are used as ids for the additional nodes
    * @returns {boolean}
@@ -2176,6 +2192,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
   "property": "unicode",
   "tags": ["encoding"],
   "warnings": [
+    "** DEPRECATED see https://github.com/Modernizr/Modernizr/issues/2468 **",
     "positive Unicode support doesn't mean you can use it inside <title>, this seems more related to OS & Language packs"
   ]
 }
@@ -2265,7 +2282,7 @@ Detects support for the Web Animation API, a way to create css animations in js
    * @param {string} prop - String naming the property to test (either camelCase or kebab-case)
    * @param {string} [value] - String of the value to test
    * @param {boolean} [skipValueTest=false] - Whether to skip testing that the value is supported when using non-native detection
-   * @returns {false|string} returns the string version of the property, or false if it is unsupported
+   * @returns {string|boolean} returns the string version of the property, or `false` if it is unsupported
    * @example
    *
    * testAllProps determines whether a given CSS property, in some prefixed form,
@@ -2382,13 +2399,13 @@ Detects support for the ':target' CSS pseudo-class.
   "tags": ["css"],
   "builderAliases": ["css_supports"],
   "notes": [{
-    "name": "W3C Spec",
+    "name": "W3C Spec (The @supports rule)",
     "href": "https://dev.w3.org/csswg/css3-conditional/#at-supports"
-  },{
+  }, {
     "name": "Related Github Issue",
     "href": "https://github.com/Modernizr/Modernizr/issues/648"
-  },{
-    "name": "W3C Spec",
+  }, {
+    "name": "W3C Spec (The CSSSupportsRule interface)",
     "href": "https://dev.w3.org/csswg/css3-conditional/#the-csssupportsrule-interface"
   }]
 }
@@ -2451,9 +2468,7 @@ Does the browser support the HTML5 [hidden] attribute?
 }
 !*/
 /* DOC
-
 Determines if DOM4 MutationObserver support is available.
-
 */
 
   Modernizr.addTest('mutationobserver',
@@ -2463,11 +2478,12 @@ Determines if DOM4 MutationObserver support is available.
 {
   "name": "Template Tag",
   "property": "template",
+  "caniuse": "template",
   "tags": ["elem"],
   "notes": [{
     "name": "HTML5Rocks Article",
     "href": "https://www.html5rocks.com/en/tutorials/webcomponents/template/"
-  },{
+  }, {
     "name": "W3C Spec",
     "href": "https://web.archive.org/web/20171130222649/http://www.w3.org/TR/html5/scripting-1.html"
   }]
@@ -2490,6 +2506,29 @@ Determines if DOM4 MutationObserver support is available.
 !*/
 
   Modernizr.addTest('time', 'valueAsDate' in createElement('time'));
+
+/*!
+{
+  "name": "Track element and Timed Text Track",
+  "property": ["texttrackapi", "track"],
+  "tags": ["elem"],
+  "builderAliases": ["elem_track"],
+  "authors": ["Addy Osmani"],
+  "notes": [{
+    "name": "W3C Spec (Track Element)",
+    "href": "https://web.archive.org/web/20121119095019/http://www.w3.org/TR/html5/the-track-element.html#the-track-element"
+  }, {
+    "name": "W3C Spec (Track API)",
+    "href": "https://web.archive.org/web/20121119094620/http://www.w3.org/TR/html5/media-elements.html#text-track-api"
+  }],
+  "warnings": ["While IE10 has implemented the track element, IE10 does not expose the underlying APIs to create timed text tracks by JS (really sad)"]
+}
+!*/
+
+  Modernizr.addTest('texttrackapi', typeof (createElement('video').addTextTrack) === 'function');
+
+  // a more strict test for track including UI support: document.createElement('track').kind === 'subtitles'
+  Modernizr.addTest('track', 'kind' in createElement('track'));
 
 /*!
 {
@@ -2525,20 +2564,6 @@ When used on an `<input>`, this attribute signifies that the resource it takes s
 
 /*!
 {
-  "name": "placeholder attribute",
-  "property": "placeholder",
-  "tags": ["forms", "attribute"],
-  "builderAliases": ["forms_placeholder"]
-}
-!*/
-/* DOC
-Tests for placeholder attribute in inputs and textareas
-*/
-
-  Modernizr.addTest('placeholder', ('placeholder' in createElement('input') && 'placeholder' in createElement('textarea')));
-
-/*!
-{
   "name": "sizes attribute",
   "async": true,
   "property": "sizes",
@@ -2547,10 +2572,10 @@ Tests for placeholder attribute in inputs and textareas
   "notes": [{
     "name": "WHATWG Spec",
     "href": "https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element"
-    },{
+  }, {
     "name": "Srcset and sizes",
     "href": "https://ericportis.com/posts/2014/srcset-sizes/"
-    }]
+  }]
 }
 !*/
 /* DOC
@@ -2564,7 +2589,7 @@ Test for the `sizes` attribute on images
     var isSizes = 'sizes' in image;
 
     // ... but we need to deal with Safari 9...
-    if (!isSizes && ('srcset' in  image)) {
+    if (!isSizes && ('srcset' in image)) {
       width2 = 'data:image/gif;base64,R0lGODlhAgABAPAAAP///wAAACH5BAAAAAAALAAAAAACAAEAAAICBAoAOw==';
       width1 = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 
@@ -2592,7 +2617,7 @@ Test for the `sizes` attribute on images
   "notes": [{
     "name": "Smashing Magazine Article",
     "href": "https://www.smashingmagazine.com/2013/08/webkit-implements-srcset-and-why-its-a-good-thing/"
-  },{
+  }, {
     "name": "Generate multi-resolution images for srcset with Grunt",
     "href": "https://addyosmani.com/blog/generate-multi-resolution-images-for-srcset-with-grunt/"
   }]
@@ -2603,6 +2628,31 @@ Test for the srcset attribute of images
 */
 
   Modernizr.addTest('srcset', 'srcset' in createElement('img'));
+
+/*!
+{
+  "name": "SVG",
+  "property": "svg",
+  "caniuse": "svg",
+  "tags": ["svg"],
+  "authors": ["Erik Dahlstrom"],
+  "polyfills": [
+    "svgweb",
+    "raphael",
+    "amplesdk",
+    "canvg",
+    "svg-boilerplate",
+    "sie",
+    "dojogfx",
+    "fabricjs"
+  ]
+}
+!*/
+/* DOC
+Detects support for SVG in `<embed>` or `<object>` elements.
+*/
+
+  Modernizr.addTest('svg', !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
 
 
   // Run each test
@@ -2620,9 +2670,9 @@ Test for the srcset attribute of images
   }
 
   // Leak Modernizr namespace
-  window.Modernizr = Modernizr;
+  scriptGlobalObject.Modernizr = Modernizr;
 
 
 ;
 
-})(window, document);
+})(window, window, document);
