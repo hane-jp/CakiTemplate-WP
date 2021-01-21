@@ -4,13 +4,13 @@
 import "babel-polyfill"
 
 //pointerEventsを利用する場合に必要なポリフィル
-import 'pepjs'
+// import 'pepjs'
 
 //IntersectionObserverを利用する場合に必要なポリフィル
-import 'intersection-observer'
+// import 'intersection-observer'
 
 //Web Animations APIをフルで利用する場合に必要なポリフィル
-import 'web-animations-js'
+// import 'web-animations-js'
 
 //jqueryをグローバル化する場合は、以下をコメントアウトを解除
 //window.$ = window.jQuery = $
@@ -35,9 +35,6 @@ if(bodyClass.contains('.mfp-btn')){
   magPopup_config()
 }
 
-import colorbox_config from  "./base/_colorbox/__config.js"
-colorbox_config()
-
 //---------------------スムーズスクロール関連
 
 import smoothScroll_config from  "./base/_smooth-scroll/__config.js"
@@ -55,13 +52,6 @@ if(bodyClass.contains('vue')){
   vue_config()
 }
 
-//---------------------SVGコントロール
-
-import snapsvg_config from './base/_snapsvg/__config.js'
-if(bodyClass.contains('snapsvg')){
-  snapsvg_config()
-}
-
 //---------------------csv
 
 import csv_config from './base/_csv/__config.js'
@@ -69,32 +59,7 @@ if(bodyClass.contains('_csv')){
   csv_config()
 }
 
-//---------------------googlemap
-
-import loadGoogleMapsApi from 'load-google-maps-api-2'
-import * as gmap_setting from './base/_googlemap/__config.js'
-
-if(bodyClass.contains('_googlemap')){
-  loadGoogleMapsApi.key = '' //APIキー入力
-  loadGoogleMapsApi().then(function (googleMaps) {
-    gmap_setting.sample1() //googlemapのセッティング
-  }).catch(function (err) {
-    console.error(err)
-  })
-}
-
 //---------------------その他
-
-import drawer_config from './base/_drawer/__config.js'
-if(bodyClass.contains('_drawer')){
-  drawer_config()
-}
-
-import * as interSO_config from './base/_intersection-observer/__config.js'
-if(bodyClass.contains('_intersection-observer')){
-  interSO_config.base()
-  interSO_config.sample()
-}
 
 import * as webAnimations_config from './base/_web-animations/__config.js'
 import * as animations_config from './base/_web-animations/__sample.js'
